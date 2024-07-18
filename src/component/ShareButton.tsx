@@ -5,8 +5,7 @@ const ShareToChatButton: React.FC = () => {
 
     
     const handleShareToChat = () => {
-        utils.openTelegramLink(`
-        https://t.me/share/url?url={https://t.me/tbook_incentive_bot?start=50636747698965}&text={helloworld}'`)
+        utils.openTelegramLink("https://t.me/share/url?url={https://t.me/tbook_incentive_bot?start=50636747698965}&text={helloworld}")
     }
 
 
