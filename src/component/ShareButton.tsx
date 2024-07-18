@@ -1,24 +1,18 @@
 import React from 'react';
-import { useTelegram, useSendMessage } from '@telegram-apps/sdk-react';
-
+import { initUtils } from '@telegram-apps/sdk-react';
 const ShareToChatButton: React.FC = () => {
-  const { showPopup } = useTelegram();
-  const sendMessage = useSendMessage();
+    const utils = initUtils();
 
-  const handleShare = () => {
-    // Show the chat selection popup
-    showPopup({
-      title: 'Select Chat',
-      description: 'Choose a chat to share this content with.',
-      onSelectChat: (chatId) => {
-        // Send a message to the selected chat
-        sendMessage(chatId, 'Your custom message');
-      },
-    });
-  };
+    
+    const handleShareToChat = () => {
+        utils.openTelegramLink(`
+        https://t.me/share/url?url={https://t.me/tbook_incentive_bot?start=50636747698965}&text={helloworld}'`)
+    }
+
+
 
   return (
-    <button onClick={handleShare}>
+    <button onClick={handleShareToChat}>
       Share to Chat
     </button>
   );
