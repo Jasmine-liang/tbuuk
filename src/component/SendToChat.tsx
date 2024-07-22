@@ -24,7 +24,13 @@ const SendToChatButton: React.FC = () => {
     }
     };
   
-        
+    const handleInvoice = () => {
+        if (typeof window !== "undefined") {
+            WebApp.openInvoice("https://t.me/tbook_incentive_bot?start=50636747698965", ()=>{
+                alert("close!")
+            })
+        }
+    }
    
   
     // useEffect(() => {
@@ -50,6 +56,8 @@ const SendToChatButton: React.FC = () => {
         </button>
         <p>--------------</p>
         <button onClick={handleInvite}>Send to chat</button>
+        <p>--------------</p>
+        <button onClick={handleInvoice}>Test invoice</button>
         </>
         }
         </div>
