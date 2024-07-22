@@ -7,11 +7,11 @@ const SendToChatButton: React.FC = () => {
     const [webApp, setWebApp] = useState<typeof WebApp | null>(null);
     const [message, setMessage] = useState<string>('');
   
-    useEffect(() => {
-      // Initialize Telegram WebApp
-      const app = WebApp.init();
-      setWebApp(app);
-    }, []);
+    // useEffect(() => {
+    //   // Initialize Telegram WebApp
+    //   const app = WebApp.init();
+    //   setWebApp(app);
+    // }, []);
   
     const sendToChat = () => {
       if (webApp && message) {
@@ -29,6 +29,9 @@ const SendToChatButton: React.FC = () => {
     return (
         <div>
           <button onClick={sendToChat}>Send to Chat</button>
+          <button onClick={() => WebApp.showAlert(`Hello World! Current count ii`)}>
+            Show Alert
+        </button>
         </div>
       );
   
