@@ -10,14 +10,13 @@ const SendToChatButton: React.FC = () => {
     useEffect(() => {
         if (typeof window !== "undefined") {
                // Your browser-specific code here
-             
         }
       }, []);
  
       const sendToChat = () => {
-           
-        WebApp.sendData("hhhhhhiiiii");
-      
+        if(typeof window !== "undefined") {
+            WebApp.sendData("hhhhhhiiiii");
+        }      
     };
 
 
@@ -25,7 +24,8 @@ const SendToChatButton: React.FC = () => {
         <div>
           {/* <button onClick={sendToChat}>Send to Chat</button> */}
          { typeof window !== "undefined" &&
-          <><button onClick={() => WebApp.showAlert(`Hello World! Current count ii`)}>
+          <>
+          <button onClick={() => WebApp.showAlert(`Hello World! Current count ii`)}>
             Show Alert
         </button>
         <p>--------------</p>
