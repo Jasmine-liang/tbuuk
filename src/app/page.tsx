@@ -3,22 +3,34 @@ import CopyLinkButton from '@/component/CopyLinkButton'
 import  ShareToChatButton  from '../component/ShareButton'
 import SendToChatButton from '@/component/SendToChat'
 import ExternalShareButton from '@/component/ExternalShare'
-import { TonConnectButton } from "@tonconnect/ui-react";
+import { THEME, TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
 import { useTonConnect } from "@/hooks/useTonConnect";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
 
-// this manifest is used temporarily for development purposes
-const manifestUrl =
-  "https://markokhman.github.io/first_contract_front_end/tonconnect-manifest.json";
 
 function App() {
   const { connected } = useTonConnect();
+  const wallet = useTonWallet();
+  
 
+  // if (!wallet) {
+  //   return (
+  //         // <>
+  //         //   <p>
+  //         //     To display the data related to the TON Connect, it is required to connect your wallet
+  //         //   </p>
+  //         //   <TonConnectButton />
+  //         // </>
+      
+  //          <TonConnectButton />
+  // )
+   
+    
+  // }
   return (
     <>
-      <TonConnectUIProvider manifestUrl={manifestUrl}>
 
-      <ShareToChatButton />
+      {/* <ShareToChatButton />
       <p>----------------</p>
       <CopyLinkButton />
       <p>----------------</p>
@@ -29,9 +41,28 @@ function App() {
         <div>
         <TonConnectButton />
       </div>
-      <div>is connected: {connected}</div>  
-      </TonConnectUIProvider>
+      {
+        {connected} &&  <div>is connected:</div>  
+      } */}
 
+      {/* {!wallet ? (
+        <TonConnectButton />
+      ) : ( */}
+        <>
+          <ShareToChatButton />
+          <p>----------------</p>
+          <CopyLinkButton />
+          <p>----------------</p>
+          <SendToChatButton />
+          <p>----------------</p>
+          <ExternalShareButton />
+          <p>----------------</p>
+          <div>
+            <TonConnectButton />
+          </div>
+          {connected && <div>is connected:</div>}
+        </>
+      {/* )} */}
     </>
   )
 }
