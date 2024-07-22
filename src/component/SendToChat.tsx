@@ -4,35 +4,35 @@ import WebApp from '@twa-dev/sdk';
 
 
 const SendToChatButton: React.FC = () => {
-    const [webApp, setWebApp] = useState<typeof WebApp | null>(null);
-    const [message, setMessage] = useState<string>('');
+
   
   
-  
-    if (typeof window !== "undefined") {
-        // Your browser-specific code here
-        const sendToChat = () => {
-            if (webApp && message) {
-              webApp.sendData(message);
-              setMessage('');
-            }
-          };
-      }
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+               // Your browser-specific code here
+             
+        }
+      }, []);
  
-  
-    //   const sendToChat = () => {
-    //       WebApp.sendData("Send data!!!");
-    //       WebApp.showAlert('Hey there!');
-        
-    //   };
+      const sendToChat = () => {
+           
+        WebApp.sendData("hhhhhhiiiii");
+      
+    };
+
 
     return (
         <div>
           {/* <button onClick={sendToChat}>Send to Chat</button> */}
          { typeof window !== "undefined" &&
-          <button onClick={() => WebApp.showAlert(`Hello World! Current count ii`)}>
+          <><button onClick={() => WebApp.showAlert(`Hello World! Current count ii`)}>
             Show Alert
-        </button>}
+        </button>
+        <p>--------------</p>
+        <button onClick={sendToChat}>Send to chat</button>
+        </>
+        }
+
         </div>
       );
   
