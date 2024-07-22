@@ -1,12 +1,19 @@
 import React, { useEffect } from 'react';
 
 const SendToChatButton: React.FC = () => {
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.ready();
-    }
-  }, []);
-
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+          console.log('Window object:', window);
+          console.log('Telegram object:', window.Telegram);
+          
+          if (window.Telegram && window.Telegram.WebApp) {
+            window.Telegram.WebApp.ready();
+            alert('Telegram WebApp is ready');
+          } else {
+            alert('Telegram WebApp is not available.');
+          }
+        }
+      }, []);
 
   //The sendData method in the Telegram Web Apps SDK is designed to send data to the bot that opened the web app. 
   //The method itself does not return any value directly; instead, it sends the data to the parent chat or bot, 
