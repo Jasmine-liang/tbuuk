@@ -20,10 +20,10 @@ function App() {
       <p>----------------</p>
       <ExternalShareButton />
       <p>----------------</p>
-        <TonConnectButton />
         <div>
         <TonConnectButton />
       </div>
+      <div>is connected: {connected}</div>
     </>
   )
 }
