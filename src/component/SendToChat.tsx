@@ -7,9 +7,9 @@ const SendToChatButton: React.FC = () => {
     const initTelegramWebApp = () => {
       if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
         window.Telegram.WebApp.ready();
-        console.log('Telegram WebApp is ready');
+        alert('Telegram WebApp is ready');
       } else {
-        console.error('Telegram WebApp is not available.');
+        alert('Telegram WebApp is not available.');
       }
     };
 
@@ -27,9 +27,9 @@ const SendToChatButton: React.FC = () => {
 
     if (window.Telegram?.WebApp) {
       window.Telegram.WebApp.sendData(message);
-      console.log('Data sent to chat');
+      alert('Data sent to chat');
     } else {
-      console.error('Telegram WebApp is not available.');
+      alert(' In function Telegram WebApp is not available.');
     }
   };
 
