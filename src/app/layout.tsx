@@ -25,9 +25,6 @@ export default function RootLayout(props: { children: ReactNode }) {
   )
   return (
     <html lang="en">
-   <head>
-        <script src="https://telegram.org/js/telegram-web-app.js" />
-    </head>
       <body className={inter.className}>
         <Providers initialState={initialState}>{props.children}</Providers>
       </body>
