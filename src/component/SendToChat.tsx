@@ -20,6 +20,7 @@ const SendToChatButton: React.FC = () => {
 
         const inviteMessage = "https://t.me/JazzyDali_bot/testwallet?start=50636747698965"
         WebApp.switchInlineQuery(message, ['users', 'groups', 'channels']);
+        
     
     }
     };
@@ -31,19 +32,6 @@ const SendToChatButton: React.FC = () => {
             })
         }
     }
-   
-  
-    // useEffect(() => {
-    //     if (typeof window !== "undefined") {
-    //            // Your browser-specific code here
-    //     }
-    //   }, []);
- 
-    //   const sendToChat = () => {
-    //     if(typeof window !== "undefined") {
-    //         WebApp.sendData("hhhhhhiiiii");
-    //     }      
-    // };
 
 
     return (
@@ -56,8 +44,6 @@ const SendToChatButton: React.FC = () => {
         </button>
         <p>--------------</p>
         <button onClick={handleInvite}>Send to chat</button>
-        <p>--------------</p>
-        <button onClick={handleInvoice}>Test invoice</button>
         </>
         }
         </div>
