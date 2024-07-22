@@ -1,6 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import WebApp from '@twa-dev/sdk';
 
+const shareToWhatsApp = (text: string) => {
+  const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+};
+
+const shareToMail = (subject:string, body: string) => {
+  const url = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.open(url, '_blank');
+};
+
+const ShareButtons = () => {
+  const shareText = 'Here is something interesting I found!';
+  const mailSubject = 'Check this out!';
+  const mailBody = shareText + '\n\nhttps://example.com';
+
+  return (
+    <div>
+      <button onClick={() => shareToWhatsApp(shareText)}>Share to WhatsApp</button>
+      <button onClick={() => shareToMail(mailSubject, mailBody)}>Share via Email</button>
+    </div>
+  );
+};
 
 
 const ExternalShareButton: React.FC = () => {
@@ -66,6 +88,7 @@ const ExternalShareButton: React.FC = () => {
           <>
         <button onClick={handleExternalShare}>Share this</button>
   
+        <ShareButtons />
         </>
         }
         </div>
