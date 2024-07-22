@@ -26,7 +26,8 @@ export default function RootLayout(props: { children: ReactNode }) {
   return (
     <html lang="en">
        <Head>
-        <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" > </Script>
+        <Script async
+    defer src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" > </Script>
       </Head>
       <body className={inter.className}>
         <Providers initialState={initialState}>{props.children}</Providers>

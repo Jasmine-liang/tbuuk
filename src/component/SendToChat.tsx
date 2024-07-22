@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import Script from 'next/script';
+
 
 const SendToChatButton: React.FC = () => {
   useEffect(() => {
@@ -32,9 +34,13 @@ const SendToChatButton: React.FC = () => {
   };
 
   return (
+    <>
+    <Script async
+    defer src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" > </Script>
     <button onClick={handleSendToChat}>
       Send to Chat
     </button>
+    </>
   );
 };
 
