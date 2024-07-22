@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Script from 'next/script';
 
 // Define the shape of the WebApp object
 interface TelegramWebApp {
@@ -19,10 +18,11 @@ const useTelegramWebApp = () => {
       script.onload = () => {
         if (window.Telegram && window.Telegram.WebApp) {
           setWebApp(window.Telegram.WebApp);
+          alert("yesss")
         }
       };
       document.body.appendChild(script);
-  
+      alert("appendchild")
       return () => {
         document.body.removeChild(script);
       };
@@ -47,6 +47,7 @@ const SendToChatButton: React.FC = () => {
     useEffect(() => {
         if (webApp) {
           webApp.ready();
+          alert("ready")
           webApp.sendData(message)
           // Use other webApp methods as needed
         }
