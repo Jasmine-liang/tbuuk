@@ -1,20 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Script from 'next/script';
 
+// Define the shape of the WebApp object
+interface TelegramWebApp {
+    ready: () => void;
+    // Add other methods and properties as needed
+    sendData: (msg: string) => void
+  }
+
+  
+const useTelegramWebApp = () => {
+    const [webApp, setWebApp] = useState<TelegramWebApp | null>(null);
+  
+    useEffect(() => {
+      const script = document.createElement('script');
+      script.src = 'https://telegram.org/js/telegram-web-app.js';
+      script.async = true;
+      script.onload = () => {
+        if (window.Telegram && window.Telegram.WebApp) {
+          setWebApp(window.Telegram.WebApp);
+        }
+      };
+      document.body.appendChild(script);
+  
+      return () => {
+        document.body.removeChild(script);
+      };
+    }, []);
+  
+    return webApp;
+  };
 
 const SendToChatButton: React.FC = () => {
-  useEffect(() => {
-    const initTelegramWebApp = () => {
-      if (typeof window !== 'undefined' && window.Telegram?.WebApp) {
-        window.Telegram.WebApp.ready();
-        alert('Telegram WebApp is ready');
-      } else {
-        alert('Telegram WebApp is not available.');
-      }
-    };
 
-    initTelegramWebApp();
-  }, []);
+    const webApp = useTelegramWebApp();
+
 
   const handleSendToChat = () => {
     const message = `
@@ -24,23 +44,26 @@ const SendToChatButton: React.FC = () => {
       
       https://t.me/tbook_incentive_bot?start=50636747698965
     `.trim();
-
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.sendData(message);
-      alert('Data sent to chat');
-    } else {
-      alert(' In function Telegram WebApp is not available.');
-    }
+    useEffect(() => {
+        if (webApp) {
+          webApp.ready();
+          webApp.sendData(message)
+          // Use other webApp methods as needed
+        }
+      }, [webApp]);
+    // if (window.Telegram?.WebApp) {
+    //   window.Telegram.WebApp.sendData(message);
+    //   alert('Data sent to chat');
+    // } else {
+    //   alert(' In function Telegram WebApp is not available.');
+    // }
   };
 
   return (
-    <>
-    <Script async
-    defer src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" > </Script>
     <button onClick={handleSendToChat}>
       Send to Chat
     </button>
-    </>
+
   );
 };
 
