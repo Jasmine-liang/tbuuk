@@ -17,7 +17,7 @@ const ExternalShareButton: React.FC = () => {
         if (typeof window !== "undefined") {
           const url = 'https://t.me/tbook_incentive_bot?start=50636747698965'; // Replace with your URL
           const text = 'Check this out!';
-        
+      
           if (navigator.share) {
             navigator.share({
               title: 'Check this out!',
@@ -29,16 +29,14 @@ const ExternalShareButton: React.FC = () => {
           } else {
             const isAndroid = /Android/i.test(navigator.userAgent);
             const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-        
-            if (isAndroid) {
-              const shareUrl = `intent://send/#Intent;scheme=http;package=com.android.chrome;S.browser_fallback_url=${encodeURIComponent(url)};end`;
-              window.location.href = shareUrl;
-            } else if (isIOS) {
+      
+            if (isAndroid || isIOS) {
+              // Use WhatsApp share link as a fallback for both platforms
               const shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text + ' ' + url)}`;
               window.location.href = shareUrl;
             } else {
               // Fallback for unsupported devices/browsers
-              window.location.href = url;
+              alert('Your device does not support sharing.');
             }
           }
 
