@@ -13,20 +13,20 @@ function App() {
   const wallet = useTonWallet();
   
 
-  // if (!wallet) {
-  //   return (
-  //         // <>
-  //         //   <p>
-  //         //     To display the data related to the TON Connect, it is required to connect your wallet
-  //         //   </p>
-  //         //   <TonConnectButton />
-  //         // </>
+  if (!wallet) {
+    return (
+          // <>
+          //   <p>
+          //     To display the data related to the TON Connect, it is required to connect your wallet
+          //   </p>
+          //   <TonConnectButton />
+          // </>
       
-  //          <TonConnectButton />
-  // )
+           <TonConnectButton />
+  )
    
     
-  // }
+  }
   return (
     <>
 
@@ -45,7 +45,8 @@ function App() {
         {connected} &&  <div>is connected:</div>  
       } */}
 
-      {/* {!wallet ? (
+  {/* <TonConnectUIProvider>
+      {!wallet ? (
         <TonConnectButton />
       ) : ( */}
         <>
@@ -62,7 +63,8 @@ function App() {
           </div>
           {connected && <div>is connected:</div>}
         </>
-      {/* )} */}
+    {/* //   )}
+    // </TonConnectUIProvider> */}
     </>
   )
 }
