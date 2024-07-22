@@ -1,11 +1,6 @@
 import React, { useEffect } from 'react';
-import { initUtils } from '@telegram-apps/sdk-react';
-import { useTelegramWebApp } from './SendToChat'
 
 const CopyLinkButton: React.FC = () => {
-
-  const utils = initUtils();
-  const webApp = useTelegramWebApp();
 
   const handleCopyLink = () => {
     const link = `https://t.me/tbook_incentive_bot?start=50636747698965`;
