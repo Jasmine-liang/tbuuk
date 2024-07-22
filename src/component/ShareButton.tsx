@@ -19,7 +19,6 @@ const ShareToChatButton: React.FC = () => {
     <button onClick={handleShareToChat}>
       Share to Chat
     </button>
-    <button onClick={handleShareLink }>share link</button>
     </>
   );
 };
