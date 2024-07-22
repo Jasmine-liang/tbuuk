@@ -15,15 +15,15 @@ export function Providers(props: {
 }) {
   const [config] = useState(() => getConfig())
   const [queryClient] = useState(() => new QueryClient())
-  // const manifestUrl = useMemo(() => {
-  //   return new URL('tonconnect-manifest.json', window.location.href).toString();
-  // }, []);
+
 // this manifest is used temporarily for development purposes
-const manifestUrl = 'https://raw.githubusercontent.com/ton-community/tutorials/main/03-client/test/public/tonconnect-manifest.json';
+const manifestUrl =
+  "https://markokhman.github.io/first_contract_front_end/tonconnect-manifest.json";
   
+  
+
   return (
     <TonConnectUIProvider manifestUrl={manifestUrl}>
-
     <WagmiProvider config={config} initialState={props.initialState}>
       <QueryClientProvider client={queryClient}>
       <SDKProvider acceptCustomStyles debug>

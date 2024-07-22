@@ -5,13 +5,19 @@ import SendToChatButton from '@/component/SendToChat'
 import ExternalShareButton from '@/component/ExternalShare'
 import { TonConnectButton } from "@tonconnect/ui-react";
 import { useTonConnect } from "@/hooks/useTonConnect";
+import { TonConnectUIProvider } from "@tonconnect/ui-react";
 
+// this manifest is used temporarily for development purposes
+const manifestUrl =
+  "https://markokhman.github.io/first_contract_front_end/tonconnect-manifest.json";
 
 function App() {
   const { connected } = useTonConnect();
 
   return (
     <>
+      <TonConnectUIProvider manifestUrl={manifestUrl}>
+
       <ShareToChatButton />
       <p>----------------</p>
       <CopyLinkButton />
@@ -23,7 +29,9 @@ function App() {
         <div>
         <TonConnectButton />
       </div>
-      <div>is connected: {connected}</div>
+      <div>is connected: {connected}</div>  
+      </TonConnectUIProvider>
+
     </>
   )
 }
