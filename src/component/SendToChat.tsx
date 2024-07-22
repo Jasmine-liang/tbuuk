@@ -7,18 +7,18 @@ const SendToChatButton: React.FC = () => {
     const [webApp, setWebApp] = useState<typeof WebApp | null>(null);
     const [message, setMessage] = useState<string>('');
   
-    // useEffect(() => {
-    //   // Initialize Telegram WebApp
-    //   const app = WebApp.init();
-    //   setWebApp(app);
-    // }, []);
   
-    const sendToChat = () => {
-      if (webApp && message) {
-        webApp.sendData(message);
-        setMessage('');
+  
+    if (typeof window !== "undefined") {
+        // Your browser-specific code here
+        const sendToChat = () => {
+            if (webApp && message) {
+              webApp.sendData(message);
+              setMessage('');
+            }
+          };
       }
-    };
+ 
   
     //   const sendToChat = () => {
     //       WebApp.sendData("Send data!!!");
@@ -28,10 +28,11 @@ const SendToChatButton: React.FC = () => {
 
     return (
         <div>
-          <button onClick={sendToChat}>Send to Chat</button>
+          {/* <button onClick={sendToChat}>Send to Chat</button> */}
+         { typeof window !== "undefined" &&
           <button onClick={() => WebApp.showAlert(`Hello World! Current count ii`)}>
             Show Alert
-        </button>
+        </button>}
         </div>
       );
   
