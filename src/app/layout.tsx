@@ -9,6 +9,7 @@ import { cookieToInitialState } from 'wagmi'
 
 import { getConfig } from '../wagmi'
 import { Providers } from './providers'
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,7 +26,7 @@ export default function RootLayout(props: { children: ReactNode }) {
   return (
     <html lang="en">
        <Head>
-        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+        <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" > </Script>
       </Head>
       <body className={inter.className}>
         <Providers initialState={initialState}>{props.children}</Providers>
