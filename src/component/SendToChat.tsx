@@ -8,7 +8,9 @@ const SendToChatButton: React.FC = () => {
     const handleInvite = () => {
         if (typeof window !== "undefined") 
     {
-        const inviteMessage = "https://t.me/tbook_incentive_bot?start=50636747698965"
+
+        "http://t.me/JazzyDali_bot/testwallet"
+        const inviteMessage = "https://t.me/JazzyDali_bot/testwallet?start=50636747698965"
         WebApp.switchInlineQuery(inviteMessage, ['users', 'groups', 'channels']);
     
     }
