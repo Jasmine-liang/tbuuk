@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import WebApp from '@twa-dev/sdk';
 import styles from "./index.module.scss";
+import Image from "components/Image";
 
 const CopyLinkButton: React.FC = () => {
 
@@ -25,9 +26,15 @@ const CopyLinkButton: React.FC = () => {
 
 
   return (
-    <button  className={styles.text} onClick={handleCopyLink}>
-      Copy Link aaaaaa
-    </button>
+    <div className={styles.item}>
+    <div className={styles.IconBox}>
+      <Image
+        className={styles.icon}
+        src={"image/icon27.png"}
+      />
+    </div>
+    <button className={styles.text} onClick={handleCopyLink}>Copy link</button>
+  </div>
   );
 };
 
