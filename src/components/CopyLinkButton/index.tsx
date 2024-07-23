@@ -3,10 +3,6 @@ import WebApp from '@twa-dev/sdk';
 import styles from "./index.module.scss";
 import Image from "components/Image";
 
-interface ButtonProps {
-  onClick: () => void;
-  children: ReactNode;
-}
 
 const CopyLinkButton: React.FC = () => {
 
@@ -31,17 +27,15 @@ const CopyLinkButton: React.FC = () => {
 
 
   return (
-    <div className={styles.item}>
-      <button onClick={handleCopyLink}>
-      <div className={styles.iconBox}>
-        <Image
-          className={styles.icon}
-          src={"image/icon27.png"}
-        />
-      </div>
-      <span className={styles.text}>Copy Link</span>
-    </button> 
-    </div>
+    <>
+    <div className={styles.IconBox}>
+    <Image
+      className={styles.icon}
+      src={"image/icon27.png"}
+    />
+  </div>
+  <button className={styles.text} onClick={handleCopyLink}>Copy Link</button>
+  </>
   );
 };
 

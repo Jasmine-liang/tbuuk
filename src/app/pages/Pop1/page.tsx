@@ -67,7 +67,10 @@ const Pop1 = () => {
               </div>
               <div className={styles.text}>Share to chat</div>
             </div>
+            <div className={styles.item}>
             <CopyLinkButton />
+            </div>
+
             <div className={styles.item}>
               <div className={styles.IconBox}>
                 <Image
