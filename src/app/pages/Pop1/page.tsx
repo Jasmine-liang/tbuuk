@@ -7,63 +7,10 @@ import ListItem from "components/ListItem";
 import Cell from "components/Cell";
 import WebApp from '@twa-dev/sdk';
 import { initUtils  } from '@telegram-apps/sdk-react';
+import CopyLinkButton from "@/components/CopyLinkButton";
 
 const Pop1 = () => {
 
-  const utils = initUtils();
-
-  const handleCopyLink = () => {
-    const link = `https://t.me/tbook_incentive_bot?start=50636747698965`;
-    navigator.clipboard.writeText(link).then(() => {
-      console.log('Link copied to clipboard!');
-      if (typeof window !== "undefined") {
-      WebApp.showAlert(`Copied!`)
-      }
-
-    }).catch(err => {
-      console.error('Failed to copy link: ', err);
-    });
-  }
-
-  const handleInviteFriends = () => {
-    const message = `
-    https://t.me/tbook_incentive_bot?start=50636747698965
-    
-    @tbook_incentive_bot
-    Hi friend, get your 5 scratch cards🎉
-    
-    💅Scratch to earn 🪙 Notcoin 💵20,000U 🏆TPoints
-    https://t.me/tbook_incentive_bot?start=50636747698965
-          `.trim()
-    utils.openTelegramLink(`https://t.me/share/url?url=${message}`)
-
-  }
-
-  const isWebShareSupported = () => {
-    console.log("share", navigator.share )
-      return navigator.share !== undefined;
-    };
-
-  const handleExternalShare = async() => {
-    if (typeof window !== "undefined") {
-
-      if (isWebShareSupported()) {
-        try {
-          await navigator.share({
-            title: 'Check this out!',
-            text: 'Here is something interesting I found.',
-            url: 'https://example.com'
-          });
-          console.log('Content shared successfully!');
-        } catch (error) {
-          console.error('Error sharing content:', error);
-        }
-      } else {
-        console.warn('Web Share API is not supported in this browser.');
-      }
-
-    }
-  }
 
   return (
     <>
@@ -89,7 +36,7 @@ const Pop1 = () => {
               src={"image/icon22.png"}
             />
           </div>
-          <button className={styles.title} onClick={handleInviteFriends}>invite friends</button>
+          <button className={styles.title} onClick={()=> console.log("aa")}>invite friends</button>
           <div className={styles.list}>
             <ListItem
               name="Invite a Fren"
@@ -127,7 +74,8 @@ const Pop1 = () => {
                   src={"image/icon27.png"}
                 />
               </div>
-              <button className={styles.text} onClick={handleCopyLink}>Copy link</button>
+              <CopyLinkButton />
+              {/* <button className={styles.text} onClick={handleCopyLink}>Copy link</button> */}
             </div>
             <div className={styles.item}>
               <div className={styles.IconBox}>
@@ -136,7 +84,7 @@ const Pop1 = () => {
                   src={"image/icon28.png"}
                 />
               </div>
-              <button className={styles.text} onClick={handleExternalShare}>More</button>
+              <button className={styles.text} onClick={()=> console.log("DASDAS")}>More</button>
             </div>
           </div>
           <Image
