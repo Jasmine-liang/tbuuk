@@ -32,7 +32,11 @@ const ShareToChatButton: React.FC = () => {
       https://t.me/tbook_incentive_bot?start=50636747698965
     `;
 
-    WebApp.openLink(`tg://msg?text=${encodeURIComponent(shareText)}`);
+    if (typeof window !== "undefined") {
+      WebApp.openLink(`tg://msg?text=${encodeURIComponent(shareText)}`);
+
+    }
+
 
       }
 
