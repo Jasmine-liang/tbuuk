@@ -9,6 +9,7 @@ import WebApp from '@twa-dev/sdk';
 import { initUtils  } from '@telegram-apps/sdk-react';
 import CopyLinkButton from "@/components/CopyLinkButton";
 import ShareToChatButton from "@/components/ShareLinkButton";
+import ExternalLinkButton from "@/components/ExternalLinkButton";
 
 const Pop1 = () => {
 
@@ -73,19 +74,9 @@ const Pop1 = () => {
             </div>
 
             <div className={styles.item}>
-              <div className={styles.IconBox}>
-                <Image
-                  className={styles.icon}
-                  src={"image/icon28.png"}
-                />
-              </div>
-              <button className={styles.text} onClick={()=> console.log("DASDAS")}>More</button>
+            <ExternalLinkButton />
             </div>
           </div>
-          {/* <Image
-            src={"image/icon29.png"}
-            className={styles.btn}
-          /> */}
           <div>
           <ShareToChatButton />
           </div>
