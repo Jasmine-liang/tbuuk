@@ -3,13 +3,18 @@
 import useStore from "@/stores/useStore";
 import styles from "./index.module.scss";
 import Image from "components/Image";
+import { TonConnect, TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
 const Wallet = () => {
+
+  const wallet = useTonWallet();
+
   const { setShowPage,showPage } = useStore();
   return (
     <div className={styles.Wallet}>
       <div className={styles.item}>
         <Image src={showPage["Page2"]?"image/icon79.png":"image/icon15.png"} />
-        <div className={styles.text}>{showPage["Page2"]?"EQC...0e":"Connect wallet"}</div>
+        {/* <div className={styles.text}>{showPage["Page2"]?"EQC...0e":"Connect wallet"}</div> */}
+        {!wallet ? <TonConnectButton /> : "EQC...0e"}
       </div>
       <div
         className={styles.item}

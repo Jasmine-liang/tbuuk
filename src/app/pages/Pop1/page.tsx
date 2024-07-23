@@ -62,13 +62,6 @@ const Pop1 = () => {
           </Cell>
           <div className={styles.btns}>
             <div className={styles.item}>
-              {/* <div className={styles.IconBox}>
-                <Image
-                  className={styles.icon}
-                  src={"image/icon26.png"}
-                />
-              </div>
-              <div className={styles.text}>Share to chat</div> */}
               <ShareToChatButton />
             </div>
             <div className={styles.item}>
@@ -79,8 +72,9 @@ const Pop1 = () => {
             <ExternalLinkButton />
             </div>
           </div>
+          <div>
           <InviteFriendsButton />
-        
+          </div>
         </div>
       </Popup>
     </>
