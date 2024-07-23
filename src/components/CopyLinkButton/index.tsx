@@ -31,6 +31,7 @@ const CopyLinkButton: React.FC = () => {
 
 
   return (
+    <div className={styles.item}>
       <button onClick={handleCopyLink}>
       <div className={styles.iconBox}>
         <Image
@@ -39,7 +40,8 @@ const CopyLinkButton: React.FC = () => {
         />
       </div>
       <span className={styles.text}>Copy Link</span>
-    </button>
+    </button> 
+    </div>
   );
 };
 
