@@ -13,9 +13,10 @@ import { TonConnectUIProvider } from "@tonconnect/ui-react";
 
 const Page = () => {
   const { showPage } = useStore();
-
+// this manifest is used temporarily for development purposes
+const manifestUrl = 'https://raw.githubusercontent.com/ton-community/tutorials/main/03-client/test/public/tonconnect-manifest.json';
   return (
-    <TonConnectUIProvider>
+    <TonConnectUIProvider manifestUrl={manifestUrl} >
 
     <div>
       <Page1 />
