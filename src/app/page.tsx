@@ -9,11 +9,14 @@ import Pop3 from "./pages/Pop3/page";
 import Pop4 from "./pages/Pop4/page";
 import Pop5 from "./pages/Pop5/page";
 import Pop6 from "./pages/Pop6/page";
+import { TonConnectUIProvider } from "@tonconnect/ui-react";
 
 const Page = () => {
   const { showPage } = useStore();
 
   return (
+    <TonConnectUIProvider>
+
     <div>
       <Page1 />
       {showPage["Page2"] && <Page2 />}
@@ -24,6 +27,8 @@ const Page = () => {
       {showPage["Pop5"] && <Pop5 />}
       {showPage["Pop6"] && <Pop6 />}
     </div>
+    </TonConnectUIProvider>
+
   );
 };
 

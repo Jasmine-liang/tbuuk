@@ -3,7 +3,7 @@
 import useStore from "@/stores/useStore";
 import styles from "./index.module.scss";
 import Image from "components/Image";
-import { TonConnect, TonConnectButton, TonConnectUIProvider, useTonWallet } from "@tonconnect/ui-react";
+import {  TonConnectButton, TonConnectUIProvider, useTonWallet } from "@tonconnect/ui-react";
 const Wallet = () => {
 
   const wallet = useTonWallet();
