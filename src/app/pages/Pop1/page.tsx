@@ -11,7 +11,21 @@ import CopyLinkButton from "@/components/CopyLinkButton";
 
 const Pop1 = () => {
 
+  const utils = initUtils();
 
+  const handleInviteFriends = () => {
+    const message = `
+    https://t.me/tbook_incentive_bot?start=50636747698965
+    
+    @tbook_incentive_bot
+    Hi friend, get your 5 scratch cards🎉
+    
+    💅Scratch to earn 🪙 Notcoin 💵20,000U 🏆TPoints
+    https://t.me/tbook_incentive_bot?start=50636747698965
+          `.trim()
+    utils.openTelegramLink(`https://t.me/share/url?url=${message}`)
+
+  }
   return (
     <>
       <Popup pageName="Pop1" closeClass={``}>
@@ -36,7 +50,7 @@ const Pop1 = () => {
               src={"image/icon22.png"}
             />
           </div>
-          <button className={styles.title} onClick={()=> console.log("aa")}>invite friends</button>
+          <button className={styles.title} onClick={handleInviteFriends}>invite friends</button>
           <div className={styles.list}>
             <ListItem
               name="Invite a Fren"
