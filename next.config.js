@@ -6,6 +6,7 @@ const nextConfig = {
         prependData: `@import "@/scss/mixin.scss";`,
         outPutStyle: "expanded"
     },
+    target: 'serverless', // add this line
 }
 
 module.exports = nextConfig
