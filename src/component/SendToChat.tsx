@@ -29,7 +29,7 @@ const SendToChatButton: React.FC = () => {
         <div>
          { typeof window !== "undefined" &&
           <>
-           <button onClick={handleInvite}>Send to chat</button>
+           <button onClick={handleInvite}>Share to Chat</button>
         </>
         }
         </div>
