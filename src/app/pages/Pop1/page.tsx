@@ -67,16 +67,9 @@ const Pop1 = () => {
               </div>
               <div className={styles.text}>Share to chat</div>
             </div>
-            <div className={styles.item}>
-              <div className={styles.IconBox}>
-                <Image
-                  className={styles.icon}
-                  src={"image/icon27.png"}
-                />
-              </div>
+            
               <CopyLinkButton />
-              {/* <button className={styles.text} onClick={handleCopyLink}>Copy link</button> */}
-            </div>
+          
             <div className={styles.item}>
               <div className={styles.IconBox}>
                 <Image
