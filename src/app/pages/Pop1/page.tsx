@@ -86,7 +86,9 @@ const Pop1 = () => {
             src={"image/icon29.png"}
             className={styles.btn}
           /> */}
+          <div>
           <ShareToChatButton />
+          </div>
         </div>
       </Popup>
     </>
