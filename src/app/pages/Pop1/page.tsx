@@ -11,6 +11,7 @@ import CopyLinkButton from "@/components/CopyLinkButton";
 import ExternalLinkButton from "@/components/ExternalLinkButton";
 import ShareToChatButton from "@/components/InviteFriendsButton";
 import InviteFriendsButton from "@/components/InviteFriendsButton";
+import ShareLinkButton from "@/components/ShareLinkButton";
 
 const Pop1 = () => {
 
@@ -62,7 +63,7 @@ const Pop1 = () => {
           </Cell>
           <div className={styles.btns}>
             <div className={styles.item}>
-              <ShareToChatButton />
+              <InviteFriendsButton />
             </div>
             <div className={styles.item}>
             <CopyLinkButton />
@@ -73,7 +74,7 @@ const Pop1 = () => {
             </div>
           </div>
           <div>
-          <InviteFriendsButton />
+          <ShareLinkButton/>
           </div>
         </div>
       </Popup>
