@@ -17,19 +17,10 @@ const SendToChatButton: React.FC = () => {
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-        const initData = WebApp.initData;
-        if (initData) {
-          try {
-            const initDataObj = JSON.parse(initData);
-            if (initDataObj.user) {
-              setUser(initDataObj.user);
-              alert(initDataObj.user.id)
-            }
-          } catch (error) {
-            alert(error)
-            console.error('Error parsing WebApp.initData:', error);
-          }
-        }
+                if (WebApp.initDataUnsafe.user) {
+                  setUser(WebApp.initDataUnsafe.user);
+                  alert(WebApp.initDataUnsafe.user.id)
+                }       
     }
       }, []);
 
