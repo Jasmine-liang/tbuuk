@@ -24,26 +24,12 @@ const SendToChatButton: React.FC = () => {
     
     }
     };
-  
-    const handleInvoice = () => {
-        if (typeof window !== "undefined") {
-            WebApp.openInvoice("https://t.me/tbook_incentive_bot?start=50636747698965", ()=>{
-                alert("close!")
-            })
-        }
-    }
-
 
     return (
         <div>
-          {/* <button onClick={sendToChat}>Send to Chat</button> */}
          { typeof window !== "undefined" &&
           <>
-          <button onClick={() => WebApp.showAlert(`Hello World! Current count ii`)}>
-            Show Alert
-        </button>
-        <p>--------------</p>
-        <button onClick={handleInvite}>Send to chat</button>
+           <button onClick={handleInvite}>Send to chat</button>
         </>
         }
         </div>

@@ -86,9 +86,8 @@ const ExternalShareButton: React.FC = () => {
         <div>
          { typeof window !== "undefined" &&
           <>
-        <button onClick={handleExternalShare}>Share this</button>
+        <button onClick={handleExternalShare}>Share More 外链</button>
   
-        <ShareButtons />
         </>
         }
         </div>
