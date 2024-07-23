@@ -3,13 +3,15 @@
 import useStore from "@/stores/useStore";
 import styles from "./index.module.scss";
 import Image from "components/Image";
-import { TonConnect, TonConnectButton, useTonWallet } from "@tonconnect/ui-react";
+import { TonConnect, TonConnectButton, TonConnectUIProvider, useTonWallet } from "@tonconnect/ui-react";
 const Wallet = () => {
 
   const wallet = useTonWallet();
 
   const { setShowPage,showPage } = useStore();
   return (
+    <TonConnectUIProvider>
+
     <div className={styles.Wallet}>
       <div className={styles.item}>
         <Image src={showPage["Page2"]?"image/icon79.png":"image/icon15.png"} />
@@ -53,6 +55,8 @@ const Wallet = () => {
         <div className={styles.text}>Roll</div>
       </div>
     </div>
+    </TonConnectUIProvider>
+
   );
 };
 
