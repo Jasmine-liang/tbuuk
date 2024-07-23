@@ -8,7 +8,7 @@ const CopyLinkButton: React.FC = () => {
     navigator.clipboard.writeText(link).then(() => {
       console.log('Link copied to clipboard!');
       if (typeof window !== "undefined") {
-      WebApp.showAlert(`Hello World! Current count ii`)
+      WebApp.showAlert(`Copied!`)
       }
 
     }).catch(err => {

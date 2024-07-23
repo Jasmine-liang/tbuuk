@@ -20,7 +20,7 @@ const SendToChatButton: React.FC = () => {
 
         const inviteMessage = "https://t.me/JazzyDali_bot/testwallet?start=50636747698965"
         WebApp.switchInlineQuery(message, ['users', 'groups', 'channels']);
-        
+        WebApp.close();
     
     }
     };
