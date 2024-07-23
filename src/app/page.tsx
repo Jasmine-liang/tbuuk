@@ -1,48 +1,30 @@
-'use client'
+"use client";
 
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import useStore from "@/stores/useStore";
+import Page1 from "./pages/Page1/page";
+import Page2 from "./pages/Page2/page";
+import Pop1 from "./pages/Pop1/page";
+import Pop2 from "./pages/Pop2/page";
+import Pop3 from "./pages/Pop3/page";
+import Pop4 from "./pages/Pop4/page";
+import Pop5 from "./pages/Pop5/page";
+import Pop6 from "./pages/Pop6/page";
 
-function App() {
-  const account = useAccount()
-  const { connectors, connect, status, error } = useConnect()
-  const { disconnect } = useDisconnect()
+const Page = () => {
+  const { showPage } = useStore();
 
   return (
-    <>
-      <div>
-        <h2>Account</h2>
+    <div>
+      <Page1 />
+      {showPage["Page2"] && <Page2 />}
+      {showPage["Pop1"] && <Pop1 />}
+      {showPage["Pop2"] && <Pop2 />}
+      {showPage["Pop3"] && <Pop3 />}
+      {showPage["Pop4"] && <Pop4 />}
+      {showPage["Pop5"] && <Pop5 />}
+      {showPage["Pop6"] && <Pop6 />}
+    </div>
+  );
+};
 
-        <div>
-          status: {account.status}
-          <br />
-          addresses: {JSON.stringify(account.addresses)}
-          <br />
-          chainId: {account.chainId}
-        </div>
-
-        {account.status === 'connected' && (
-          <button type="button" onClick={() => disconnect()}>
-            Disconnect
-          </button>
-        )}
-      </div>
-
-      <div>
-        <h2>Connect</h2>
-        {connectors.map((connector) => (
-          <button
-            key={connector.uid}
-            onClick={() => connect({ connector })}
-            type="button"
-          >
-            {connector.name}
-          </button>
-        ))}
-        <div>{status}</div>
-        <div>{error?.message}</div>
-      </div>
-    </>
-  )
-}
-
-export default App
+export default Page;

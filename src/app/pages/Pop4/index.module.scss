@@ -1,0 +1,246 @@
+.content {
+    width: 393px;
+    height: 620px;
+    background-image: url(/image/icon21.png);
+    background-size: 100% auto;
+    background-color: #FFC8FF;
+    filter: drop-shadow(0px -4px 0px #FFF);
+    border-radius: 25px 25px 0 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    gap: 20px;
+
+    .iconBox {
+        width: 56px + 10px;
+        height: 56px + 10px;
+        transform: translateX(-50%) rotate(-15deg);
+        flex-shrink: 0;
+        border-radius: 22px;
+        border: 4px solid #FFF;
+        background: #F9B5F9;
+        box-shadow: 1px 3px 0px 1px #000;
+        @include colCenter;
+        @include rowCenter;
+        @include absolute(50%, -33.49px);
+
+        .icon {
+            @include size(32px);
+            transform: rotate(15deg);
+        }
+    }
+
+    .title {
+        width: 240px;
+        height: 44px;
+        flex-shrink: 0;
+    }
+
+    .scrollView {
+        flex: 1;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        width: 100%;
+        padding-bottom: 49px;
+        & > *{
+            flex-shrink: 0;
+        }
+    }
+
+    .cards {
+        gap: 11px;
+        display: flex;
+        margin-bottom: 10px;
+        .item {
+            width: 174px + 4px;
+            height: 90px + 2px;
+            flex-shrink: 0;
+            background-color: #4BA6F3;
+            border: 2px solid #fff;
+            filter: drop-shadow(0px 4px 0px #000);
+            border-radius: 20px;
+            @include relative;
+            @include colCenter;
+            gap: 6px;
+            padding: 0 13.55px;
+
+            &:nth-of-type(2) {
+                background-color: #ED5E62;
+            }
+
+            .icon {
+                @include size(53.349px);
+            }
+
+            .itemContent {
+
+                .itemTitle,
+                .itemText {
+                    color: #FFDC48;
+                    text-shadow: 0px 1px 0px #000;
+                    -webkit-text-stroke-width: 1px;
+                    -webkit-text-stroke-color: #000;
+                    font-family: Lemon;
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-transform: uppercase;
+                }
+
+                .itemText {
+                    font-size: 16px;
+                }
+            }
+
+            &::after {
+                content: "";
+                @include absolute(null, 60px, 10px);
+                @include size(24px);
+                background-image: url(/image/icon35.png);
+                background-size: cover;
+            }
+        }
+    }
+
+    .grid {
+        height: 140px;
+        border: 1px solid #000;
+        border-radius: 20px;
+        background-color: #ffffff;
+        filter: drop-shadow(0px 2px 0px #000);
+        @include rowCenter;
+        @include colCenter;
+        padding: 14px 0;
+        box-sizing: border-box;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+
+        .item {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            border-radius: 16px;
+            background: #E6EBE3;
+        }
+    }
+
+    .swiper {
+        width: 363px + 4px;
+        height: 190px + 6px;
+        border: 1px solid #000;
+        border-radius: 26px;
+        background-color: #ffffff;
+        filter: drop-shadow(0px 2px 0px #000);
+        @include relative;
+        margin-bottom: 5px;
+
+        .dot {
+            @include absolute(null, null, null, 16px);
+            height: 8px;
+            width: 100%;
+            z-index: 9999;
+            @include rowCenter;
+            gap: 5px;
+
+            .dotItem {
+                @include size(8px);
+                background-color: #666666;
+                @include radiusFull;
+
+                &.active {
+                    background-color: #000000;
+                }
+            }
+        }
+    }
+
+    .rules {
+        padding: 15px 10px;
+        flex-shrink: 0;
+        background-image: url(/image/icon40.png);
+        background-size: 100% 100%;
+
+        p {
+            transform: translateX(2px);
+            color: #000;
+            font-family: Rubik;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%;
+            width: 100%;
+            
+            
+            /* 20px */
+            display: flex;
+            span{
+                display: block;
+                flex: 1;
+                word-wrap:break-word; 
+                overflow: hidden;
+            }
+            &::before {
+                display: inline-block;
+                content: "";
+                @include radiusFull;
+                background-color: #000;
+                @include size(4px);
+                flex-shrink: 0;
+                margin-top: 11px;
+                margin-right:13px;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .list {
+        gap: 4px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 16px;
+
+        .listRed {
+            color: #DD2E44;
+            font-family: Rubik;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 100%;
+        }
+
+        .listBlue {
+            color: #5AB5F8;
+            font-family: Rubik;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%;
+            /* 16px */
+        }
+    }
+
+    .tip {
+        width: 363px;
+        height: 72px;
+        flex-shrink: 0;
+        color: #FFF;
+        text-align: center;
+        font-family: Rubik;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+        /* 16px */
+        background-image: url(/image/icon25.png);
+        background-size: cover;
+        @include colCenter;
+        @include rowCenter;
+    }
+}

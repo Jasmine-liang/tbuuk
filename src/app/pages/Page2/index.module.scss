@@ -1,0 +1,30 @@
+.page {
+    --bgColor: #ED5E62;
+    // --bg1: url(/image/icon2.png);
+    --bg2: url(/image/icon60.png);
+    height: 100vh;
+    width: 100vw;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 12px;
+
+        .title {
+            width: 293.236px;
+            height: 83.624px;
+            width: 279.75px;
+            height: 82.624px;
+            flex-shrink: 0;
+            margin-bottom: 45.38px;
+            transform: translateX(2px);
+        }
+
+        .wallet {
+            width: 100%;
+            margin-top: 35px;
+        }
+    }
+}

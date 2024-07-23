@@ -1,0 +1,235 @@
+.content {
+  width: 393px;
+  height: 100vh;
+  background-image: url(/image/icon41.png);
+  background-size: 100% auto;
+  background-color: #ffc8ff;
+  filter: drop-shadow(0px -4px 0px #fff);
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 24px;
+
+  .title {
+    width: 208.979px;
+    height: 47.752px;
+    flex-shrink: 0;
+    flex-shrink: 0;
+  }
+
+  .userS {
+    margin-top: 5px;
+    display: flex;
+    gap: 32px;
+
+    .item {
+      @include colCenter;
+      flex-direction: column;
+      @include relative();
+
+      .icon {
+        @include size(64px);
+      }
+
+      &:nth-of-type(1) {
+        margin-top: 56px;
+      }
+
+      &:nth-of-type(2) {
+        .icon {
+          @include size(80px);
+        }
+        &::after {
+          content: "";
+          @include absolute(50%, 0);
+          transform: translateX(-50%);
+          background-image: url(/image/icon44.png);
+          width: 57px;
+          height: 27px;
+          flex-shrink: 0;
+          background-size: contain;
+          top: -9px;
+        }
+
+        .text {
+          margin-top: -18px;
+          background-color: #ffdc48;
+          //   transform: translateY(-5px);
+        }
+      }
+
+      &:nth-of-type(3) {
+        margin-top: 72px;
+
+        .text {
+          background-color: #f4b68a;
+        }
+      }
+
+      .text {
+        color: #000;
+        font-family: Rubik;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        width: 83px;
+        height: 26px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        border: 2px solid #000;
+        background: #cbd0ff;
+        box-shadow: 0px 2px 0px 0px #000;
+        margin-top: -14px;
+        text-align: center;
+        /* 20px */
+      }
+
+      .text2 {
+        color: #fff;
+        text-align: center;
+        font-family: Rubik;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 100%;
+        margin-top: 4px;
+        /* 16px */
+      }
+    }
+  }
+
+  .time {
+    color: #fff;
+    text-align: center;
+    font-family: Lemon;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* 12px */
+    text-transform: capitalize;
+    margin-top: 35px;
+    display: inline-flex;
+    padding: 4px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .list {
+    flex: 1;
+    flex-shrink: 0;
+    border-radius: 20px 20px 0 0;
+    background-color: #f3f0fa;
+    border: 2px solid #000;
+    margin-top: 9px;
+    border-bottom: none;
+
+    width: 373px;
+    @include colCenter;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-bottom: 90px;
+
+    // @include areaBottom;
+
+    .mask {
+      width: 369px;
+      height: 70px;
+      position: fixed;
+      bottom: 0;
+      background-color: #f3f0fa;
+    }
+    &::before {
+      content: "";
+      width: 32px;
+      height: 5px;
+      flex-shrink: 0;
+      border-radius: 4px;
+      background: #000;
+      @include absolute(50%, 10px);
+      position: sticky;
+      transform: translateX(-50%);
+      margin-bottom: 13px;
+    }
+
+    .item {
+      width: 317px;
+      @include colCenter;
+      height: 68px;
+      flex-shrink: 0;
+      color: #000;
+      @include relative;
+      &::after {
+        content: "";
+        @include absolute(null, null, 0, 0);
+        width: 100%;
+        height: 2px;
+        background-image: url(/image/icon61.png);
+      }
+
+      &.active {
+        transform: translateY(-1px);
+        background-color: #5965d3;
+        border-radius: 20px;
+        width: 353px;
+        height: 72px;
+        flex-shrink: 0;
+        position: absolute;
+        bottom: 18px;
+        padding: 0 18px;
+        z-index: 2;
+
+        &::after {
+          display: none;
+        }
+
+        & > * {
+          color: #ffffff !important;
+        }
+      }
+
+      .index {
+        font-family: Rubik;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 100%;
+        width: 9px + 27px;
+        /* 16px */
+      }
+
+      .center {
+        @include colCenter;
+        font-family: Rubik;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        // line-height: 100%;
+        gap: 11px;
+
+        /* 16px */
+        .icon {
+          @include size(50px);
+        }
+      }
+
+      .text2 {
+        color: #f03140;
+        text-align: right;
+        font-family: Rubik;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 100%;
+        flex: 1;
+        /* 20px */
+      }
+    }
+  }
+}

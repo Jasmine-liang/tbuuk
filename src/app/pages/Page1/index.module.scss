@@ -1,0 +1,25 @@
+.page {
+    --bgColor: #4BA6F3;
+    --bg1: url(/image/icon2.png);
+    --bg2: url(/image/icon1.png);
+
+    .content {
+        // padding-top: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 15px;
+
+        .title {
+            width: 293.236px;
+            height: 83.624px;
+            margin-bottom: 26.38px;
+            transform: translateX(2px) translateY(-2px);
+        }
+        .wallet{
+            width: 100%;
+            margin-top: 18px;
+        }
+    }
+}

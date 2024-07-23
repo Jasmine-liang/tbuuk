@@ -1,0 +1,66 @@
+.ListItem {
+    width: 363px;
+    height: 82px;
+    flex-shrink: 0;
+    background-color: #FFF;
+    border: 2px solid #000;
+    filter: drop-shadow(0px 2px 0px #000);
+    border-radius: 20px;
+    @include colCenter;
+    gap: 11.2px;
+    @include relative;
+    &::after{
+        content:"";
+        @include size(24px);
+        @include absolute(null, 0, 0, 0);
+        background-image: url(/image/icon24.png);
+        background-size: cover;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .Icon {
+        @include size(56.78px);
+        margin-left: 12px;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .name {
+            color: #000;
+            font-family: Rubik;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 100%;
+            /* 20px */
+        }
+
+        .bottom {
+            @include colCenter;
+            gap: 6px;
+
+            .label {
+                color: #67747C;
+                font-family: Rubik;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 100%;
+                /* 16px */
+            }
+
+            .bottomIcon {
+                width: 16px;
+                height: 16px;
+                background-color: #FFDC48;
+                @include radiusFull;
+            }
+        }
+
+    }
+
+}
