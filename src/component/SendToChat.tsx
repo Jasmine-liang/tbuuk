@@ -23,8 +23,10 @@ const SendToChatButton: React.FC = () => {
             const initDataObj = JSON.parse(initData);
             if (initDataObj.user) {
               setUser(initDataObj.user);
+              alert(initDataObj.user.id)
             }
           } catch (error) {
+            alert(error)
             console.error('Error parsing WebApp.initData:', error);
           }
         }
