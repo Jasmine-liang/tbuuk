@@ -9,7 +9,6 @@ import WebApp from '@twa-dev/sdk';
 import { initUtils  } from '@telegram-apps/sdk-react';
 import CopyLinkButton from "@/components/CopyLinkButton";
 import ExternalLinkButton from "@/components/ExternalLinkButton";
-import ShareToChatButton from "@/components/InviteFriendsButton";
 import InviteFriendsButton from "@/components/InviteFriendsButton";
 import ShareLinkButton from "@/components/ShareLinkButton";
 

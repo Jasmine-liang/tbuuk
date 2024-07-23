@@ -40,8 +40,9 @@ const ExternalLinkButton: React.FC = () => {
       className={styles.icon}
       src={"image/icon28.png"}
     />
-    <span className={styles.text}>More</span>
   </button>
+  <span className={styles.text}>More</span>
+
   </>
   );
 };
