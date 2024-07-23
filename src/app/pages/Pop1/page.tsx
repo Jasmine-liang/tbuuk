@@ -8,24 +8,11 @@ import Cell from "components/Cell";
 import WebApp from '@twa-dev/sdk';
 import { initUtils  } from '@telegram-apps/sdk-react';
 import CopyLinkButton from "@/components/CopyLinkButton";
+import ShareToChatButton from "@/components/ShareLinkButton";
 
 const Pop1 = () => {
 
-  const utils = initUtils();
 
-  const handleInviteFriends = () => {
-    const message = `
-    https://t.me/tbook_incentive_bot?start=50636747698965
-    
-    @tbook_incentive_bot
-    Hi friend, get your 5 scratch cards🎉
-    
-    💅Scratch to earn 🪙 Notcoin 💵20,000U 🏆TPoints
-    https://t.me/tbook_incentive_bot?start=50636747698965
-          `.trim()
-    utils.openTelegramLink(`https://t.me/share/url?url=${message}`)
-
-  }
   return (
     <>
       <Popup pageName="Pop1" closeClass={``}>
@@ -50,7 +37,7 @@ const Pop1 = () => {
               src={"image/icon22.png"}
             />
           </div>
-          <button className={styles.title} onClick={handleInviteFriends}>invite friends</button>
+          <div className={styles.title} >invite friends</div>
           <div className={styles.list}>
             <ListItem
               name="Invite a Fren"
@@ -95,10 +82,11 @@ const Pop1 = () => {
               <button className={styles.text} onClick={()=> console.log("DASDAS")}>More</button>
             </div>
           </div>
-          <Image
+          {/* <Image
             src={"image/icon29.png"}
             className={styles.btn}
-          />
+          /> */}
+          <ShareToChatButton />
         </div>
       </Popup>
     </>

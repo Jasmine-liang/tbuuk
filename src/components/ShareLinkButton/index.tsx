@@ -35,13 +35,13 @@ const ShareToChatButton: React.FC = () => {
 
   return (
     <>
-    <div className={styles.IconBox}>
-    <Image
-      className={styles.icon}
-      src={"image/icon27.png"}
-    />
-  </div>
-  <button className={styles.text} onClick={handleShareToChat}>Copy Link</button>
+
+  <button onClick={handleShareToChat}>
+  <Image
+            src={"image/icon29.png"}
+            className={styles.btn}
+          />
+  </button>
   </>
  
   );
