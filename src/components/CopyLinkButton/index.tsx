@@ -31,7 +31,7 @@ const CopyLinkButton: React.FC = () => {
 
 
   return (
-      <button className={styles.item} onClick={handleCopyLink}>
+      <button onClick={handleCopyLink}>
       <div className={styles.iconBox}>
         <Image
           className={styles.icon}
