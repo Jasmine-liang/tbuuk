@@ -7,7 +7,7 @@ import WebApp from '@twa-dev/sdk';
 
 
 
-const ShareToChatButton: React.FC = () => {
+const ShareLinkButton: React.FC = () => {
 
     
     const handleShareToChat = () => {
@@ -50,4 +50,4 @@ const ShareToChatButton: React.FC = () => {
   );
 };
 
-export default ShareToChatButton;
+export default ShareLinkButton;

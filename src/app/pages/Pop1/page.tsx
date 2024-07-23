@@ -8,8 +8,9 @@ import Cell from "components/Cell";
 import WebApp from '@twa-dev/sdk';
 import { initUtils  } from '@telegram-apps/sdk-react';
 import CopyLinkButton from "@/components/CopyLinkButton";
-import ShareToChatButton from "@/components/ShareLinkButton";
 import ExternalLinkButton from "@/components/ExternalLinkButton";
+import ShareToChatButton from "@/components/InviteFriendsButton";
+import InviteFriendsButton from "@/components/InviteFriendsButton";
 
 const Pop1 = () => {
 
@@ -61,13 +62,14 @@ const Pop1 = () => {
           </Cell>
           <div className={styles.btns}>
             <div className={styles.item}>
-              <div className={styles.IconBox}>
+              {/* <div className={styles.IconBox}>
                 <Image
                   className={styles.icon}
                   src={"image/icon26.png"}
                 />
               </div>
-              <div className={styles.text}>Share to chat</div>
+              <div className={styles.text}>Share to chat</div> */}
+              <ShareToChatButton />
             </div>
             <div className={styles.item}>
             <CopyLinkButton />
@@ -77,9 +79,8 @@ const Pop1 = () => {
             <ExternalLinkButton />
             </div>
           </div>
-          <div>
-          <ShareToChatButton />
-          </div>
+          <InviteFriendsButton />
+        
         </div>
       </Popup>
     </>

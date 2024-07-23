@@ -35,13 +35,13 @@ const ExternalLinkButton: React.FC = () => {
 
   return (
     <>
-    <div className={styles.IconBox}>
-    <Image
+  <button className={styles.IconBox} onClick={handleCopyLink}>
+  <Image
       className={styles.icon}
       src={"image/icon28.png"}
     />
-  </div>
-  <button className={styles.text} onClick={handleCopyLink}>More</button>
+    <span className={styles.text}>More</span>
+  </button>
   </>
   );
 };
