@@ -17,6 +17,7 @@ const CopyLinkButton: React.FC = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
     if (WebApp.initDataUnsafe.user) {
+      console.log("I'm innnnnnn")
       setUser(WebApp.initDataUnsafe.user);
       console.log("userid",WebApp.initDataUnsafe.user.id )
     }
