@@ -20,6 +20,7 @@ const CopyLinkButton: React.FC = () => {
    const init = async () => {
     try {
       if (WebApp.initDataUnsafe.user) {
+        console.log("AAa")
         setUser(WebApp.initDataUnsafe.user);
         console.log("user", user?.id)
       }
@@ -27,21 +28,33 @@ const CopyLinkButton: React.FC = () => {
       console.error('Failed to initialize the Telegram SDK', error);
     }
   };
-
-  init();
-  console.log("user", user?.id)
-
+init()
   }
   }, []);
 
   const handleCopyLink = () => {
+
     const link = `https://t.me/tbook_incentive_bot?start=50636747698965`;
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
-
+    console.log("asdsa", user?.id)
     navigator.clipboard.writeText(link).then(() => {
       console.log('Link copied to clipboard!');
       if (typeof window !== "undefined") {
       WebApp.showAlert(`Copied!`)
+        // Initialize the SDK
+        const init = async () => {
+         try {
+           if (WebApp.initDataUnsafe.user) {
+             console.log("AAa")
+             setUser(WebApp.initDataUnsafe.user);
+             console.log("user", user?.id)
+           }
+         } catch (error) {
+           console.error('Failed to initialize the Telegram SDK', error);
+         }
+       };
+     init()
+       
       }
 
     }).catch(err => {
