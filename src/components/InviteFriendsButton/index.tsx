@@ -16,21 +16,11 @@ const InviteFriendsButton: React.FC = () => {
 
   const [user, setUser] = useState<TelegramUser | null>(null);
 
-
   useEffect(() => {
-    const initData = WebApp.initData;
     if (typeof window !== "undefined") {
-    if (initData) {
-      try {
-        const initDataObj = JSON.parse(initData);
-        if (initDataObj.user) {
-          setUser(initDataObj.user);
-          console.log("user",initDataObj.user.id )
-          alert(initDataObj.user.id)
-        }
-      } catch (error) {
-        console.error('Error parsing WebApp.initData:', error);
-      }
+    if (WebApp.initDataUnsafe.user) {
+      setUser(WebApp.initDataUnsafe.user);
+      console.log("userid",WebApp.initDataUnsafe.user.id )
     }
   }
   }, []);
