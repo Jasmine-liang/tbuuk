@@ -1,29 +1,36 @@
 "use client";
 
-import useStore from "@/stores/useStore";
 import styles from "./index.module.scss";
 import Image from "components/Image";
-import {  TonConnectButton, TonConnectUIProvider, useTonAddress, useTonWallet } from "@tonconnect/ui-react";
+import Blockies from "react-blockies";
+import useStore from "@/stores/useStore";
+import useRemScale from "@/hooks/useRemScale";
+import { formatAddress } from "@/utils/index"
+import { TonConnectButton, TonConnectUIProvider, useTonAddress, useTonWallet } from "@tonconnect/ui-react";
 const Wallet = () => {
 
+  const scale = useRemScale();
   const wallet = useTonWallet();
   const userFriendlyAddress = useTonAddress();
+  const { setShowPage, showPage } = useStore();
 
 
-  const { setShowPage,showPage } = useStore();
   return (
 
     <div className={styles.Wallet}>
       <div className={styles.item}>
         <div className={styles.connect}>
-          <TonConnectButton /> 
+          <TonConnectButton />
         </div>
         <div className={styles.show}>
-          <Image src={showPage["Page2"]?"image/icon79.png":"image/icon15.png"} />
-        {/* <div className={styles.text}>{showPage["Page2"]?"EQC...0e":"Connect wallet"}</div> */}
-        {!wallet ? 
-      <div className={styles.text}>{showPage["Page2"]?"EQC...0e":"Connect wallet"}</div>
-        : userFriendlyAddress}
+          {wallet ? <div className={styles.blockies}>
+            <Blockies
+            seed={String(userFriendlyAddress).toLowerCase()}
+            size={32}
+            scale={scale}
+          />
+          </div> : <Image src={"image/icon15.png"} />}
+          <div className={styles.text}>{wallet ? formatAddress(userFriendlyAddress) : "Connect wallet"}</div>
         </div>
       </div>
       <div
