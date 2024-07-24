@@ -33,6 +33,7 @@ const ExternalLinkButton: React.FC = () => {
   const handleCopyLink = async() => {
   
     if (typeof window !== "undefined") {
+      console.log("userid", user?.id)
         if (isWebShareSupported()) {
             try {
               await navigator.share({
