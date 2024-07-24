@@ -73,7 +73,9 @@ const Pop1 = () => {
   return (
     <Popup pageName="Pop5" closeClass={``}>
       <div className={styles.content}>
-        <Image className={styles.title} src={"image/icon42.png"} />
+        <div className={styles.title}>Rabbit score</div>
+        <div className={styles.subtitle}>leaderboard</div>
+        {/* <Image className={styles.title} src={"image/icon42.png"} /> */}
         <div className={styles.userS}>
           <div className={styles.item}>
             <Image className={styles.icon} src={"image/icon43.png"} />

@@ -5,41 +5,27 @@ import styles from "./index.module.scss";
 import Image from "components/Image";
 import ListItem from "components/ListItem";
 import Cell from "components/Cell";
-import WebApp from '@twa-dev/sdk';
-import { initUtils  } from '@telegram-apps/sdk-react';
+import WebApp from "@twa-dev/sdk";
+import { initUtils } from "@telegram-apps/sdk-react";
 import CopyLinkButton from "@/components/CopyLinkButton";
 import ExternalLinkButton from "@/components/ExternalLinkButton";
 import InviteFriendsButton from "@/components/InviteFriendsButton";
 import ShareLinkButton from "@/components/ShareLinkButton";
 
 const Pop1 = () => {
-
-
   return (
     <>
       <Popup pageName="Pop1" closeClass={``}>
         <div className={styles.content}>
           <div className={styles.starBox}>
-            <Image
-              className={styles.star}
-              src={"image/icon14.png"}
-            />
-            <Image
-              className={styles.star}
-              src={"image/icon14.png"}
-            />
-            <Image
-              className={styles.star}
-              src={"image/icon14.png"}
-            />
+            <Image className={styles.star} src={"image/icon14.png"} />
+            <Image className={styles.star} src={"image/icon14.png"} />
+            <Image className={styles.star} src={"image/icon14.png"} />
           </div>
           <div className={styles.iconBox}>
-            <Image
-              className={styles.icon}
-              src={"image/icon22.png"}
-            />
+            <Image className={styles.icon} src={"image/icon22.png"} />
           </div>
-          <div className={styles.title} >invite friends</div>
+          <div className={styles.title}>invite friends</div>
           <div className={styles.list}>
             <ListItem
               name="Invite a Fren"
@@ -65,15 +51,15 @@ const Pop1 = () => {
               <InviteFriendsButton />
             </div>
             <div className={styles.item}>
-            <CopyLinkButton />
+              <CopyLinkButton />
             </div>
 
             <div className={styles.item}>
-            <ExternalLinkButton />
+              <ExternalLinkButton />
             </div>
           </div>
           <div>
-          <ShareLinkButton/>
+            <ShareLinkButton />
           </div>
         </div>
       </Popup>

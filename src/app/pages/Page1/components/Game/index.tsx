@@ -11,22 +11,22 @@ const Game = () => {
   const list = [
     {
       id: 1,
-      name: "WISE SBT",
+      name: "TokenA",
       icon: "image/icon7.png",
     },
     {
       id: 2,
-      name: "$ NOT Token",
+      name: "TokenB",
       icon: "image/icon8.png",
     },
     {
       id: 3,
-      name: "TPoint",
+      name: "TokenC",
       icon: "image/icon9.png",
     },
     {
       id: 4,
-      name: "??",
+      name: "Points",
       icon: "image/icon10.png",
     },
   ];
@@ -44,10 +44,7 @@ const Game = () => {
       <div className={styles.content}>
         <div className={styles.title}>scratch off tickets</div>
         <div id="container" className={styles.canvas}>
-          <Image
-            className={styles.prize}
-            src={"image/prize.png"}
-          />
+          <Image className={styles.prize} src={"image/prize.png"} />
           <canvas
             id="ggl"
             className={styles.ggl}
@@ -59,18 +56,9 @@ const Game = () => {
           <div className={styles.value}>8</div>
         </div>
         <div className={styles.starBox}>
-          <Image
-            className={styles.star}
-            src={"image/icon14.png"}
-          />
-          <Image
-            className={styles.star}
-            src={"image/icon14.png"}
-          />
-          <Image
-            className={styles.star}
-            src={"image/icon14.png"}
-          />
+          <Image className={styles.star} src={"image/icon14.png"} />
+          <Image className={styles.star} src={"image/icon14.png"} />
+          <Image className={styles.star} src={"image/icon14.png"} />
         </div>
       </div>
     </div>

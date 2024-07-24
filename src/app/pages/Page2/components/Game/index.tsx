@@ -9,14 +9,14 @@ const Game = () => {
   const intervalRef = useRef<number | undefined>(undefined);
 
   const prizes = [
-    { id: 1, name: "WISE SBT", icon: "image/icon56.png" },
-    { id: 2, name: "WISE SBT", icon: "image/icon56.png" },
-    { id: 3, name: "WISE SBT", icon: "image/icon56.png" },
-    { id: 4, name: "Special Prize", icon: "image/icon58.png" },
-    { id: 5, name: "WISE SBT", icon: "image/icon56.png" },
-    { id: 6, name: "WISE SBT", icon: "image/icon56.png" },
-    { id: 7, name: "WISE SBT", icon: "image/icon56.png" },
-    { id: 8, name: "WISE SBT", icon: "image/icon56.png" },
+    { id: 1, name: "xxxx", icon: "image/icon56.png" },
+    { id: 2, name: "xxxx", icon: "image/icon56.png" },
+    { id: 3, name: "xxxx", icon: "image/icon56.png" },
+    { id: 4, name: "xxxx", icon: "image/icon56.png" },
+    { id: 5, name: "xxxx", icon: "image/icon56.png" },
+    { id: 6, name: "xxxx", icon: "image/icon56.png" },
+    { id: 7, name: "xxxx", icon: "image/icon56.png" },
+    { id: 8, name: "xxxx", icon: "image/icon56.png" },
   ];
 
   useEffect(() => {

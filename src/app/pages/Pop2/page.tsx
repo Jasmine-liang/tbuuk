@@ -11,44 +11,17 @@ const Pop1 = () => {
       <Popup pageName="Pop2" closeClass={``}>
         <div className={styles.content}>
           <div className={styles.starBox}>
-            <Image
-              className={styles.star}
-              src={"image/icon14.png"}
-            />
-            <Image
-              className={styles.star}
-              src={"image/icon14.png"}
-            />
-            <Image
-              className={styles.star}
-              src={"image/icon14.png"}
-            />
-            <Image
-              className={styles.star}
-              src={"image/icon14.png"}
-            />
-            <Image
-              className={styles.star}
-              src={"image/icon14.png"}
-            />
-            <Image
-              className={styles.star}
-              src={"image/icon14.png"}
-            />
-            <Image
-              className={styles.star}
-              src={"image/icon14.png"}
-            />
-            <Image
-              className={styles.star}
-              src={"image/icon14.png"}
-            />
+            <Image className={styles.star} src={"image/icon14.png"} />
+            <Image className={styles.star} src={"image/icon14.png"} />
+            <Image className={styles.star} src={"image/icon14.png"} />
+            <Image className={styles.star} src={"image/icon14.png"} />
+            <Image className={styles.star} src={"image/icon14.png"} />
+            <Image className={styles.star} src={"image/icon14.png"} />
+            <Image className={styles.star} src={"image/icon14.png"} />
+            <Image className={styles.star} src={"image/icon14.png"} />
           </div>
           <div className={styles.iconBox}>
-            <Image
-              className={styles.icon}
-              src={"image/icon32.png"}
-            />
+            <Image className={styles.icon} src={"image/icon32.png"} />
           </div>
           <div className={styles.title}>boost</div>
           <Cell title="Daily boosters">
@@ -59,7 +32,7 @@ const Pop1 = () => {
                 icon={"image/icon23.png"}
               />
               <ListItem
-                name="Invite a Premium Fren"
+                name="Timing Bonus"
                 label="Next free card"
                 icon={"image/icon77.png"}
               >
@@ -72,7 +45,7 @@ const Pop1 = () => {
               <ListItem
                 iconStart
                 name="Buy Scratch Cards"
-                label="150 TPoints / Card"
+                label="150 Rabbit Points / Card"
                 icon={"image/icon78.png"}
               />
             </div>

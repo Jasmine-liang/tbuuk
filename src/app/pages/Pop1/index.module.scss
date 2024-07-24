@@ -103,6 +103,10 @@
     @include rowBetween;
 
     .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
       .IconBox {
         width: 76px;
         height: 48px;
