@@ -1,10 +1,27 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import WebApp from '@twa-dev/sdk';
 import styles from "./index.module.scss";
 import Image from "components/Image";
 
-
+interface TelegramUser {
+  id: number;
+  first_name: string;
+  last_name?: string;
+  username?: string;
+  language_code?: string;
+}
 const CopyLinkButton: React.FC = () => {
+
+  const [user, setUser] = useState<TelegramUser | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+    if (WebApp.initDataUnsafe.user) {
+      setUser(WebApp.initDataUnsafe.user);
+      console.log("userid",WebApp.initDataUnsafe.user.id )
+    }
+  }
+  }, []);
 
   const handleCopyLink = () => {
     const link = `https://t.me/tbook_incentive_bot?start=50636747698965`;
@@ -14,6 +31,7 @@ const CopyLinkButton: React.FC = () => {
       console.log('Link copied to clipboard!');
       if (typeof window !== "undefined") {
       WebApp.showAlert(`Copied!`)
+      console.log("user", user?.id)
       }
 
     }).catch(err => {

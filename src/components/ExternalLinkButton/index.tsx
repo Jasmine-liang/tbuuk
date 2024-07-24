@@ -3,28 +3,8 @@ import WebApp from '@twa-dev/sdk';
 import styles from "./index.module.scss";
 import Image from "components/Image";
 
-interface TelegramUser {
-  id: number;
-  first_name: string;
-  last_name?: string;
-  username?: string;
-  language_code?: string;
-}
-
-
 const ExternalLinkButton: React.FC = () => {
 
-  const [user, setUser] = useState<TelegramUser | null>(null);
-
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-    if (WebApp.initDataUnsafe.user) {
-      setUser(WebApp.initDataUnsafe.user);
-      console.log("userid",WebApp.initDataUnsafe.user.id )
-    }
-  }
-  }, [user]);
 
     const isWebShareSupported = () => {
           return navigator.share !== undefined;}
@@ -33,7 +13,6 @@ const ExternalLinkButton: React.FC = () => {
   const handleCopyLink = async() => {
   
     if (typeof window !== "undefined") {
-      console.log("userid", user?.id)
         if (isWebShareSupported()) {
             try {
               await navigator.share({
