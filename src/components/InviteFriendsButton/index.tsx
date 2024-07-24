@@ -23,7 +23,7 @@ const InviteFriendsButton: React.FC = () => {
       console.log("userid",WebApp.initDataUnsafe.user.id )
     }
   }
-  }, []);
+  }, [user]);
 
   const handleShareToChat = async() => {
   
@@ -38,7 +38,7 @@ const InviteFriendsButton: React.FC = () => {
             
             https://t.me/tbook_incentive_bot?start=50636747698965
           `.trim()
-    
+      
     
             const inviteMessage = "https://t.me/JazzyDali_bot/testwallet?start=50636747698965"
             WebApp.switchInlineQuery(message, ['users', 'groups', 'channels']);
