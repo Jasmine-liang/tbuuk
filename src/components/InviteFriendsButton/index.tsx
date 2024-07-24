@@ -1,12 +1,39 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import WebApp from '@twa-dev/sdk';
 import styles from "./index.module.scss";
 import Image from "components/Image";
 
+interface TelegramUser {
+  id: number;
+  first_name: string;
+  last_name?: string;
+  username?: string;
+  language_code?: string;
+}
+
 
 const InviteFriendsButton: React.FC = () => {
 
+  const [user, setUser] = useState<TelegramUser | null>(null);
 
+
+  useEffect(() => {
+    const initData = WebApp.initData;
+    if (typeof window !== "undefined") {
+    if (initData) {
+      try {
+        const initDataObj = JSON.parse(initData);
+        if (initDataObj.user) {
+          setUser(initDataObj.user);
+          console.log("user",initDataObj.user.id )
+          alert(initDataObj.user.id)
+        }
+      } catch (error) {
+        console.error('Error parsing WebApp.initData:', error);
+      }
+    }
+  }
+  }, []);
 
   const handleShareToChat = async() => {
   
