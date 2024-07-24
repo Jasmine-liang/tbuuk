@@ -16,11 +16,21 @@ const CopyLinkButton: React.FC = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-    if (WebApp.initDataUnsafe.user) {
-      console.log("I'm innnnnnn")
-      setUser(WebApp.initDataUnsafe.user);
-      console.log("userid",WebApp.initDataUnsafe.user.id )
+   // Initialize the SDK
+   const init = async () => {
+    try {
+      if (WebApp.initDataUnsafe.user) {
+        setUser(WebApp.initDataUnsafe.user);
+        console.log("user", user?.id)
+      }
+    } catch (error) {
+      console.error('Failed to initialize the Telegram SDK', error);
     }
+  };
+
+  init();
+  console.log("user", user?.id)
+
   }
   }, []);
 
@@ -32,7 +42,6 @@ const CopyLinkButton: React.FC = () => {
       console.log('Link copied to clipboard!');
       if (typeof window !== "undefined") {
       WebApp.showAlert(`Copied!`)
-      console.log("user", user?.id)
       }
 
     }).catch(err => {
@@ -57,3 +66,7 @@ const CopyLinkButton: React.FC = () => {
 };
 
 export default CopyLinkButton;
+function initDataUnsafe() {
+  throw new Error('Function not implemented.');
+}
+
