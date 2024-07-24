@@ -8,6 +8,6 @@ const Image = ({...props}:any) =>{
     useEffect(() =>{
 
     },[])
-    return <img {...props} src={"/"+props.src} priority alt={props.alt || "image"} />
+    return <img {...props} src={"/"+props.src} priority="true" alt={props.alt || "image"} />
 }
 export default Image

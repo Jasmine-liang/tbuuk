@@ -15,15 +15,16 @@ const Wallet = () => {
 
     <div className={styles.Wallet}>
       <div className={styles.item}>
-        <Image src={showPage["Page2"]?"image/icon79.png":"image/icon15.png"} />
-        {/* <div className={styles.text}>{showPage["Page2"]?"EQC...0e":"Connect wallet"}</div> */}
-        
-        <div className="opacity-0 absolute top-0 right-0">
+        <div className={styles.connect}>
           <TonConnectButton /> 
         </div>
+        <div className={styles.show}>
+          <Image src={showPage["Page2"]?"image/icon79.png":"image/icon15.png"} />
+        {/* <div className={styles.text}>{showPage["Page2"]?"EQC...0e":"Connect wallet"}</div> */}
         {!wallet ? 
       <div className={styles.text}>{showPage["Page2"]?"EQC...0e":"Connect wallet"}</div>
         : userFriendlyAddress}
+        </div>
       </div>
       <div
         className={styles.item}
