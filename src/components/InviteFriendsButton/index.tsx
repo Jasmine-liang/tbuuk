@@ -61,7 +61,7 @@ const InviteFriendsButton: React.FC = () => {
       src={"image/icon26.png"}
     />
   </button>
-  <span className={styles.text}>Send to chat</span>
+  <span className={styles.text}>Send to chattttttttt</span>
   </>
   );
 };
