@@ -22,6 +22,7 @@ jobs:
     - name: Build Next.js app
       run: |
         npm run build
+        npm run export
 
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.3
@@ -34,34 +35,24 @@ jobs:
 
     - name: Copy files to AWS server
       run: |
-        rsync -avz --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys" ./ ubuntu@${{ secrets.AWS_SERVER_IP }}:/usr/share/nginx/officialWebsite/tg
+        rsync -avz --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys" ./out/ ubuntu@${{ secrets.AWS_SERVER_IP }}:/usr/share/nginx/officialWebsite/tg
 
-    - name: Install Node.js, npm, and PM2 on server
+    - name: Install Node.js, npm, and serve on server
       run: |
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
         sudo apt-get update
         sudo apt-get install -y nodejs npm
-        sudo npm install -g pm2
-        if [ ! -e /usr/bin/pm2 ]; then
-          sudo ln -s /usr/local/bin/pm2 /usr/bin/pm2
-        fi
+        sudo npm install -g serve
         '
 
-    - name: Install dependencies and start application on server
+    - name: Serve static files
       run: |
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
-        cd /usr/share/nginx/officialWebsite/tg && 
-        sudo npm install &&
-        sudo /usr/local/bin/pm2 restart tg-app || sudo /usr/local/bin/pm2 start npm --name "tg-app" -- start
-        '
-
-    - name: Check PM2 status
-      run: |
-        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
-        sudo /usr/local/bin/pm2 list
-        sudo /usr/local/bin/pm2 logs tg-app --lines 50
+        sudo npx serve -s /usr/share/nginx/officialWebsite/tg
         '
 
     - name: Check listening ports
       run: |
-        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
+        sudo lsof -i -P -n | grep LISTEN
+        '
