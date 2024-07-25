@@ -13,6 +13,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Install Node.js and dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y nodejs npm
+        npm install
+
+    - name: Build Next.js app
+      run: |
+        npm run build
+
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.3
       with:
@@ -26,7 +36,7 @@ jobs:
       run: |
         rsync -avz --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys" ./ ubuntu@${{ secrets.AWS_SERVER_IP }}:/usr/share/nginx/officialWebsite/tg
 
-    - name: Install Node.js, npm, and PM2
+    - name: Install Node.js, npm, and PM2 on server
       run: |
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
         sudo apt-get update
@@ -37,7 +47,7 @@ jobs:
         fi
         '
 
-    - name: Install dependencies and start application
+    - name: Install dependencies and start application on server
       run: |
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
         cd /usr/share/nginx/officialWebsite/tg && 
