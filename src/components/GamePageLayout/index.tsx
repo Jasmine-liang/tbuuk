@@ -20,10 +20,12 @@ const GamePageLayout = ({
           : setScale(1);
     };
     resize();
-    window.addEventListener("resize", resize);
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", resize);
+      return () => {
+        window.removeEventListener("resize", resize);
+      };
+    }
   }, []);
 
   return (

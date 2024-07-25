@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from 'react';
 
 function useRemScale(uiSize: number = 395): number {
@@ -12,8 +14,12 @@ function useRemScale(uiSize: number = 395): number {
 
     useEffect(() => {
         updateScale(); // Initial calculation
-        window.addEventListener('resize', updateScale);
-        return () => window.removeEventListener('resize', updateScale);
+        if (typeof window !== "undefined") {
+            window.addEventListener('resize', updateScale);
+            return () => {
+                window.removeEventListener('resize', updateScale);
+            }
+        }
     }, [uiSize]);
 
     return scale;

@@ -1,5 +1,4 @@
-
-export default function gglFn() {
+export function gglFn() {
     const canvas = document.getElementById('ggl');
     const ctx = canvas.getContext('2d');
     const container = document.getElementById('container');
@@ -7,6 +6,7 @@ export default function gglFn() {
     // 配置参数
     const brushSize = window.innerWidth * 0.05; // 设置笔刷大小
     const revealThreshold = 0.5; // 设定揭示比例阈值，0.5 表示 50%
+    const resetTime = 2000; // 设置复原时间为5秒
 
     // 设置canvas大小与container一致
     canvas.width = container.offsetWidth;
@@ -17,6 +17,7 @@ export default function gglFn() {
     coverImage.src = '/image/page1-logo.png'; // 表层图片地址
     coverImage.onload = () => {
         ctx.drawImage(coverImage, 0, 0, canvas.width, canvas.height);
+        console.log('图片加载完成并绘制');
     };
 
     // 监听鼠标事件
@@ -68,6 +69,18 @@ export default function gglFn() {
         const revealRatio = transparentPixels / (canvas.width * canvas.height);
         if (revealRatio > revealThreshold) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            console.log('达到揭示阈值，清除画布');
+
+            // 设置复原时间
+            setTimeout(() => {
+                // 重置 globalCompositeOperation
+                ctx.globalCompositeOperation = 'source-over';
+                // 再次确保画布尺寸与容器一致
+                canvas.width = container.offsetWidth;
+                canvas.height = container.offsetHeight;
+                ctx.drawImage(coverImage, 0, 0, canvas.width, canvas.height);
+                console.log('复原时间到，重新绘制图片');
+            }, resetTime);
         }
     }
 

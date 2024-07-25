@@ -126,8 +126,9 @@
 
     .prize {
       position: relative;
-      width: 110%;
-      height: 110%;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
     }
 
     .ggl {
@@ -135,6 +136,14 @@
       top: 0;
       left: 0;
       cursor: pointer;
+      z-index: 2;
+    }
+
+    .logo {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 3;
     }
 
     .times {
@@ -168,5 +177,12 @@
         text-transform: capitalize;
       }
     }
+  }
+
+  .load {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
   }
 }

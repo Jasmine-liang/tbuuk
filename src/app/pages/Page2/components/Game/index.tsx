@@ -2,8 +2,14 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "@/components/Image";
 import styles from "./index.module.scss";
+import useStore from "@/stores/useStore";
+import { useApi } from "@/hooks/useApi";
 
 const Game = () => {
+  let resultState = 0;
+  const { user, userBalance } = useStore();
+  const { luckDraw } = useApi();
+  const [result, setResult] = useState({ prize: "" });
   const [activeIndex, setActiveIndex] = useState(0);
   const [remainingTimes, setRemainingTimes] = useState(10);
   const intervalRef = useRef<number | undefined>(undefined);
@@ -19,33 +25,55 @@ const Game = () => {
     { id: 8, name: "xxxx", icon: "image/icon56.png" },
   ];
 
+  const getLuckDraw = async () => {
+    try {
+      const res = await luckDraw({
+        userid: String(user.id),
+        profile_photo: "",
+        playmode: "2",
+      });
+
+      if (res) {
+        resultState = 1;
+        setResult(res);
+      }
+    } catch (error) {
+      resultState = 1;
+      // alert("Invite to get more cards!");
+    }
+  };
+
   useEffect(() => {
     return () => clearInterval(intervalRef.current);
   }, []);
 
   const startGame = () => {
+    if (userBalance.balance <= 0) return alert("Invite to get more cards!");
     if (remainingTimes <= 0) return;
-
-    setRemainingTimes(remainingTimes - 1);
+    getLuckDraw();
 
     let maxIdx = prizes.length;
     let n = 3 * maxIdx; // 旋转的总次数
-    let idx = 1;
+    let idx = (Math.random() * maxIdx) | 0;
 
     clearInterval(intervalRef.current);
-    intervalRef.current = window.setInterval(() => {
-      if (n === 0) {
-        clearInterval(intervalRef.current);
-        gameOver();
-        return;
-      }
-      setActiveIndex(idx);
-      idx = (idx + 1) % maxIdx;
-      n--;
-    }, 200);
+    if (typeof window !== "undefined") {
+      intervalRef.current = window.setInterval(() => {
+        if (n <= 0 && resultState) {
+          console.log(n);
+          clearInterval(intervalRef.current);
+          gameOver();
+          return;
+        }
+        setActiveIndex(idx);
+        idx = (idx + 1) % maxIdx;
+        n--;
+      }, 200);
+    }
   };
 
   const gameOver = () => {
+    // alert(result.prize);
     // alert("Game Over! You won: " + prizes[activeIndex].name);
   };
 
