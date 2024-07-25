@@ -47,9 +47,11 @@ jobs:
     - name: Serve static files
       run: |
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
-        sudo npx serve -s /usr/share/nginx/officialWebsite/tg
+        nohup npx serve -s /usr/share/nginx/officialWebsite/tg > /dev/null 2>&1 &
         '
 
     - name: Check listening ports
       run: |
-        ssh -o StrictHostKeyChecking=no -i $HOME/.
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
+        sudo lsof -i -P -n | grep LISTEN
+        '
