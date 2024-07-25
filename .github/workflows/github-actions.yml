@@ -1,18 +1,66 @@
-name: GitHub Action
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: Deploy to AWS Server
+
+on:
+  push:
+    branches:
+      - vy
+
 jobs:
-  Explore-GitHub-Actions:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Node.js and dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y nodejs npm
+        npm install
+
+    - name: Build Next.js app
+      run: |
+        npm run build
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.AWS_PEM_KEY }}
+
+    - name: Adjust destination directory permissions
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} 'sudo chown -R ubuntu:ubuntu /usr/share/nginx/officialWebsite/tg'
+
+    - name: Copy files to AWS server
+      run: |
+        rsync -avz --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys" ./out/ ubuntu@${{ secrets.AWS_SERVER_IP }}:/usr/share/nginx/officialWebsite/tg
+
+    - name: Install Nginx
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
+        sudo apt-get update
+        sudo apt-get install -y nginx
+        '
+
+    - name: Configure Nginx
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
+        echo "server {
+            listen 80;
+            server_name 16.163.21.35;
+
+            location / {
+                root /usr/share/nginx/officialWebsite/tg;
+                index index.html index.htm;
+                try_files \$uri \$uri/ /index.html;
+            }
+        }" | sudo tee /etc/nginx/sites-available/default
+        sudo systemctl restart nginx
+        '
+
+    - name: Check listening ports
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
+        sudo lsof -i -P -n | grep LISTEN
+        '
