@@ -17,20 +17,22 @@ jobs:
       uses: webfactory/ssh-agent@v0.5.3
       with:
         ssh-private-key: ${{ secrets.AWS_PEM_KEY }}
-  
+
     - name: Adjust destination directory permissions
       run: |
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} 'sudo chown -R ubuntu:ubuntu /usr/share/nginx/officialWebsite/tg'
 
     - name: Copy files to AWS server
       run: |
-        rsync -avz -e "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys" ./ ubuntu@${{ secrets.AWS_SERVER_IP }}:/usr/share/nginx/officialWebsite/tg
+        rsync -avz --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys" ./ ubuntu@${{ secrets.AWS_SERVER_IP }}:/usr/share/nginx/officialWebsite/tg
 
-    - name: Install Node.js and npm
+    - name: Install Node.js, npm, and PM2
       run: |
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
         sudo apt-get update
         sudo apt-get install -y nodejs npm
+        sudo npm install -g pm2
+        sudo ln -s /usr/local/bin/pm2 /usr/bin/pm2
         '
 
     - name: Install dependencies and start application
@@ -38,7 +40,7 @@ jobs:
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
         cd /usr/share/nginx/officialWebsite/tg && 
         sudo npm install &&
-        sudo pm2 restart tg-app || sudo pm2 start npm --name "tg-app" -- start
+        sudo /usr/local/bin/pm2 restart tg-app || sudo /usr/local/bin/pm2 start npm --name "tg-app" -- start
         '
 
     - name: Get application URL
