@@ -36,18 +36,27 @@ jobs:
       run: |
         rsync -avz --rsync-path="sudo rsync" -e "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys" ./out/ ubuntu@${{ secrets.AWS_SERVER_IP }}:/usr/share/nginx/officialWebsite/tg
 
-    - name: Install Node.js, npm, and serve on server
+    - name: Install Nginx
       run: |
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
         sudo apt-get update
-        sudo apt-get install -y nodejs npm
-        sudo npm install -g serve
+        sudo apt-get install -y nginx
         '
 
-    - name: Serve static files
+    - name: Configure Nginx
       run: |
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
-        nohup npx serve -s /usr/share/nginx/officialWebsite/tg > /dev/null 2>&1 &
+        echo "server {
+            listen 80;
+            server_name 16.163.21.35;
+
+            location / {
+                root /usr/share/nginx/officialWebsite/tg;
+                index index.html index.htm;
+                try_files \$uri \$uri/ /index.html;
+            }
+        }" | sudo tee /etc/nginx/sites-available/default
+        sudo systemctl restart nginx
         '
 
     - name: Check listening ports
