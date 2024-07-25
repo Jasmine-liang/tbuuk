@@ -43,6 +43,26 @@ jobs:
         sudo /usr/local/bin/pm2 restart tg-app || sudo /usr/local/bin/pm2 start npm --name "tg-app" -- start
         '
 
+    - name: Check PM2 status
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
+        sudo /usr/local/bin/pm2 list
+        sudo /usr/local/bin/pm2 logs tg-app --lines 50
+        '
+
+    - name: Check listening ports
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
+        sudo netstat -tulpn | grep LISTEN
+        '
+
+    - name: Check Nginx configuration
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
+        sudo nginx -t
+        sudo cat /etc/nginx/sites-available/default
+        '
+
     - name: Get application URL
       run: |
         echo "Application URL: http://${{ secrets.AWS_SERVER_IP }}:3000"
