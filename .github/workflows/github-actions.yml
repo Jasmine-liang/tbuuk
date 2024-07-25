@@ -33,10 +33,14 @@ jobs:
         sudo apt-get install -y nodejs npm
         '
 
-    - name: Install dependencies
+    - name: Install dependencies and start application
       run: |
-        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} 'sudo su -c "cd /usr/share/nginx/officialWebsite/tg && npm install"'
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
+        cd /usr/share/nginx/officialWebsite/tg && 
+        sudo npm install &&
+        sudo pm2 restart tg-app || sudo pm2 start npm --name "tg-app" -- start
+        '
 
-    - name: Restart application
+    - name: Get application URL
       run: |
-        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} 'sudo su -c "sudo systemctl restart nginx'
+        echo "Application URL: http://${{ secrets.AWS_SERVER_IP }}:3000"
