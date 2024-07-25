@@ -26,6 +26,13 @@ jobs:
       run: |
         rsync -avz -e "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys" ./ ubuntu@${{ secrets.AWS_SERVER_IP }}:/usr/share/nginx/officialWebsite/tg
 
+    - name: Install Node.js and npm
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
+        sudo apt-get update
+        sudo apt-get install -y nodejs npm
+        '
+
     - name: Install dependencies
       run: |
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} 'sudo su -c "cd /usr/share/nginx/officialWebsite/tg && npm install"'
