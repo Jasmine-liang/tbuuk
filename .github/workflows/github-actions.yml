@@ -32,7 +32,9 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y nodejs npm
         sudo npm install -g pm2
-        sudo ln -s /usr/local/bin/pm2 /usr/bin/pm2
+        if [ ! -e /usr/bin/pm2 ]; then
+          sudo ln -s /usr/local/bin/pm2 /usr/bin/pm2
+        fi
         '
 
     - name: Install dependencies and start application
@@ -52,17 +54,4 @@ jobs:
 
     - name: Check listening ports
       run: |
-        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
-        sudo netstat -tulpn | grep LISTEN
-        '
-
-    - name: Check Nginx configuration
-      run: |
-        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
-        sudo nginx -t
-        sudo cat /etc/nginx/sites-available/default
-        '
-
-    - name: Get application URL
-      run: |
-        echo "Application URL: http://${{ secrets.AWS_SERVER_IP }}:3000"
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys
