@@ -17,6 +17,10 @@ jobs:
       uses: webfactory/ssh-agent@v0.5.3
       with:
         ssh-private-key: ${{ secrets.AWS_PEM_KEY }}
+  
+    - name: Adjust destination directory permissions
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} 'sudo chown -R ubuntu:ubuntu /usr/share/nginx/officialWebsite/tg'
 
     - name: Copy files to AWS server
       run: |
