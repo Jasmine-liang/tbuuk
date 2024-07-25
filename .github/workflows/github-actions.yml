@@ -40,4 +40,16 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
         sudo apt-get update
-        sudo apt-get install -y node
+        sudo apt-get install -y nodejs npm
+        sudo npm install -g serve
+        '
+
+    - name: Serve static files
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/authorized_keys ubuntu@${{ secrets.AWS_SERVER_IP }} '
+        sudo npx serve -s /usr/share/nginx/officialWebsite/tg
+        '
+
+    - name: Check listening ports
+      run: |
+        ssh -o StrictHostKeyChecking=no -i $HOME/.
