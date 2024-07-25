@@ -20,12 +20,12 @@ jobs:
 
     - name: Copy files to AWS server
       run: |
-        rsync -avz -e "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/aws-cdn-hk.pem" ./ ubuntu@${{ secrets.AWS_SERVER_IP }}:/path/to/your/project
+        rsync -avz -e "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/aws-cdn-hk.pem" ./ ubuntu@${{ secrets.AWS_SERVER_IP }}:/usr/share/nginx/officialWebsite/tg
 
     - name: Install dependencies
       run: |
-        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/aws-cdn-hk.pem ubuntu@${{ secrets.AWS_SERVER_IP }} 'sudo su -c "cd /path/to/your/project && npm install"'
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/aws-cdn-hk.pem ubuntu@${{ secrets.AWS_SERVER_IP }} 'sudo su -c "cd /usr/share/nginx/officialWebsite/tg && npm install"'
 
     - name: Restart application
       run: |
-        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/aws-cdn-hk.pem ubuntu@${{ secrets.AWS_SERVER_IP }} 'sudo su -c "sudo systemctl restart your-application-service"'
+        ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/aws-cdn-hk.pem ubuntu@${{ secrets.AWS_SERVER_IP }} 'sudo su -c "sudo systemctl restart nginx'
