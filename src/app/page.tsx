@@ -25,12 +25,21 @@ const Page = () => {
 
   const fetchBalance = async (userid: any) => {
     try {
-      const balance = await userBalance(userid);
+      const balance = await userBalance({
+        userid: String(userid),
+        profile_photo: "",
+      });
       setBalance(balance);
     } catch (error) {
-      const user = await createUser(userid);
+      const user = await createUser({
+        userid: String(userid),
+        profile_photo: "",
+      });
       if (user) {
-        const res = await userBalance(userid);
+        const res = await userBalance({
+          userid: String(userid),
+          profile_photo: "",
+        });
         setBalance(res.balance);
       }
     }
