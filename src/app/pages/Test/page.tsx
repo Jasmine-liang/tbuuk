@@ -3,63 +3,55 @@
 import { useEffect, useState } from "react";
 import useStore from "@/stores/useStore";
 import { useApi } from "@/hooks/useApi";
-import { handleClientScriptLoad } from "next/script";
+import { TonConnectButton, useTonConnectModal } from "@tonconnect/ui-react";
+import { manifestUrl } from "@/configs/index";
 
 // 动态导入 WebApp，确保它只在客户端加载
 const WebApp =
   typeof window !== "undefined" ? require("@twa-dev/sdk").default : null;
 
 const Page = () => {
+  const { state, open, close }: any = useTonConnectModal();
+
   const userid = "99";
-  const {
-    createUser: useStoreCreateUser,
-    userBalance: useStoreUserBalance,
-    luckDraw: useStoreLuckDraw,
-    setCreateUser,
-    setUserBalance,
-    setLuckDraw,
-  } = useStore();
-  const {
-    createUser: useApiCreateUser,
-    userBalance: useApiUserBalance,
-    luckDraw: useApiLuckDraw,
-  } = useApi();
+  const {} = useStore(); // 确认是否需要从 useStore 中解构一些状态
+  const { createUser, userBalance, luckDraw } = useApi();
   const [isWebAppReady, setIsWebAppReady] = useState(false);
 
   const handleCreateUser = async () => {
-    const result = await useApiCreateUser({
+    const result = await createUser({
       userid: String(userid),
       profile_photo: "",
     });
     console.log(result);
-    setCreateUser(result);
   };
 
   const handleUserBalance = async () => {
-    const result = await useApiUserBalance({
+    const result = await userBalance({
       userid: String(userid),
       profile_photo: "",
     });
     console.log(result);
-    setUserBalance(result);
   };
 
   const handleLuckDraw = async () => {
-    const result = await useApiLuckDraw({
+    const result = await luckDraw({
       userid: String(userid),
       profile_photo: "",
       playmode: "1",
     });
     console.log(result);
-    setLuckDraw(result);
   };
 
   return (
-    <>
-      <div onClick={handleCreateUser}>createUser</div>
-      <div onClick={handleUserBalance}>userBalance</div>
-      <div onClick={handleLuckDraw}>luckDraw</div>
-    </>
+    <div>
+      <div onClick={handleCreateUser}>创建用户</div>
+      <div onClick={handleUserBalance}>用户余额</div>
+      <div onClick={handleLuckDraw}>幸运抽奖</div>
+      {/* <TonConnectButton /> */}
+      <button onClick={open}>打开模态框</button>
+      <button onClick={close}>关闭模态框</button>
+    </div>
   );
 };
 

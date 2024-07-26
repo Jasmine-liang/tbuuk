@@ -12,7 +12,7 @@ const Trophy = () => {
         setShowPage("Pop5", true);
       }}
     >
-      <Image className={styles.btn} src={"image/icon3.png"} />
+      <Image className={styles.btn} src={"image/icon81.png"} />
     </div>
   );
 };

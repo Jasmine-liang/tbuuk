@@ -34,25 +34,25 @@ const Pop1 = () => {
       val: "100",
     },
     {
-      icon: "image/icon68.png",
-      name: "EQC_yT3...K1L0e",
-      val: "100",
-    },
-    {
-      icon: "image/icon68.png",
-      name: "EQC_yT3...K1L0e",
-      val: "100",
-    },
-    {
-      icon: "image/icon68.png",
-      name: "EQC_yT3...K1L0e",
-      val: "100",
-    },
-    {
-      icon: "image/icon68.png",
+      icon: "image/icon94.png",
       name: "EQC_yT3...K1L0e",
       val: "100",
       active: true,
+    },
+    {
+      icon: "image/icon68.png",
+      name: "EQC_yT3...K1L0e",
+      val: "100",
+    },
+    {
+      icon: "image/icon68.png",
+      name: "EQC_yT3...K1L0e",
+      val: "100",
+    },
+    {
+      icon: "image/icon68.png",
+      name: "EQC_yT3...K1L0e",
+      val: "100",
     },
     {
       icon: "image/icon68.png",
@@ -73,8 +73,8 @@ const Pop1 = () => {
   return (
     <Popup pageName="Pop5" closeClass={``}>
       <div className={styles.content}>
-        <div className={styles.title}>Rabbit score</div>
-        <div className={styles.subtitle}>leaderboard</div>
+        {/* <div className={styles.title}>Rabbit score</div>
+        <div className={styles.subtitle}>leaderboard</div> */}
         {/* <Image className={styles.title} src={"image/icon42.png"} /> */}
         <div className={styles.userS}>
           <div className={styles.item}>
@@ -103,7 +103,11 @@ const Pop1 = () => {
               <div className={styles.index}>{index + 4}</div>
               <div className={styles.center}>
                 <Image className={styles.icon} src={item.icon} />
-                {item.name}
+
+                <div className={styles.name}>
+                  {item.name}
+                  {item.active && <div>{index + 4}th</div>}
+                </div>
               </div>
               <div className={styles.text2}>{item.val}</div>
             </div>

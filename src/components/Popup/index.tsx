@@ -6,21 +6,23 @@ const Popup = ({
   closeClass,
   bgClass,
   children,
+  type,
 }: {
   pageName: string;
   closeClass?: string;
   bgClass?: string;
   children: any;
+  type?: 1 | 2;
 }) => {
   const { setShowPage } = useStore();
   return (
-    <div className={styles.Popup}>
+    <div className={`${styles.Popup} ${styles["type" + type]}`}>
       <div className={styles.content}>
         <Image
           onClick={() => {
             setShowPage(pageName, false);
           }}
-          src={"image/icon20.png"}
+          src={"image/icon92.png"}
           className={styles.close + " " + closeClass}
         />
         {children}

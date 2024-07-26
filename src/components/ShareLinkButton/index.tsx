@@ -41,9 +41,9 @@ const ShareLinkButton: React.FC = () => {
   return (
     <>
 
-      <button onClick={handleShareToChat}>
+      <button className={styles.button} onClick={handleShareToChat}>
         <Image
-          src={"image/icon29.png"}
+          src={"image/icon98.png"}
           className={styles.btn}
         />
       </button>

@@ -1,3 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import "./font.scss";
 @import "./reset.scss";
 @import "./global.scss";
+
+body {
+  &::after {
+    content: "";
+    @include fixed(0, 0);
+    // background-image: url(/image/_image.png);
+    background-position-y: -114px;
+    background-size: 100% auto;
+    @include size(100%);
+    z-index: 9999;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

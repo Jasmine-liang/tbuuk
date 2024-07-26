@@ -15,7 +15,6 @@ const useAxiosNoAuth = () => {
 };
 
 
-
 export const useApi = () => {
     const { axiosNoAuth } = useAxiosNoAuth();
 

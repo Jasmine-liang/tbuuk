@@ -1,0 +1,54 @@
+.user {
+    @include colCenter;
+
+    height: 68px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 2px solid #FFF;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.90) 117.06%);
+    padding: 10px;
+    gap: 10px;
+
+    .userIcon {
+        @include size(48px);
+        border-radius: 12px;
+        border: 2px solid #FFF;
+        background: linear-gradient(132deg, #FFF 12.4%, rgba(255, 255, 255, 0.70) 89.14%);
+        @include colCenter;
+        @include rowCenter;
+
+        img {
+            @include size(32px);
+        }
+    }
+
+    .right {
+        flex-direction: column;
+        display: flex;
+        gap: 6px;
+        .val {
+            color: #000;
+            font-family: "Baloo 2";
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 100%;
+            /* 16px */
+            text-transform: capitalize;
+
+            span {
+                color: #FF7413;
+            }
+        }
+
+        .lab {
+            color: #5E361C;
+            font-family: "Baloo 2";
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 100%;
+            /* 12px */
+        }
+    }
+}

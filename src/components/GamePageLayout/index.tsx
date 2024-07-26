@@ -1,7 +1,7 @@
 "use client";
 import type React from "react";
-import styles from "./index.module.scss";
 import Trophy from "../Trophy";
+import styles from "./index.module.scss";
 import { useState, useEffect, useRef, LegacyRef } from "react";
 const GamePageLayout = ({
   children,

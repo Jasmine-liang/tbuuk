@@ -1,0 +1,21 @@
+.navBar {
+    background-color: #FFD875;
+    height: 64px;
+    @include colCenter;
+    @include rowCenter;
+    padding: 0 24px;
+    color: #101010;
+    text-align: center;
+    font-family: "Baloo 2";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 100%;
+    /* 24px */
+    text-transform: capitalize;
+
+    img {
+        @include size(24px);
+        @include absolute(24px)
+    }
+}

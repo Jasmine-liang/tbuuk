@@ -1,224 +1,264 @@
 .Game {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  align-items: center;
+  @include pagePaddinX;
+  @include relative;
+
+  .starBox {
+    @include absolute(0, 0);
+    @include size(100%);
+    pointer-events: none;
+
+    .star {
+      &:nth-of-type(1) {
+        @include absolute(26px, null, null, -10px);
+        width: 12px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+
+      &:nth-of-type(2) {
+        @include absolute(null, null, 29px, -4px);
+        width: 18px;
+        height: 22px;
+      }
+
+      &:nth-of-type(3) {
+        @include absolute(null, null, 16px, 16px);
+        width: 12px;
+        height: 14px;
+      }
+    }
+  }
+
+  .top {
     width: 100%;
-    align-items: center;
-    @include pagePaddinX;
+    height: 106px;
+    background-image: url(/image/icon6.png);
+    background-size: cover;
+    @include rowBetween;
+    @include colCenter;
+    padding: 0 40px;
     @include relative;
 
-    .starBox {
-        @include absolute(0, 0);
-        @include size(100%);
-        pointer-events: none;
-
-        .star {
-            &:nth-of-type(1) {
-                @include absolute(26px, null, null, -10px);
-                width: 12px;
-                height: 14px;
-                flex-shrink: 0;
-            }
-
-            &:nth-of-type(2) {
-                @include absolute(null, null, 29px, -4px);
-                width: 18px;
-                height: 22px;
-            }
-
-            &:nth-of-type(3) {
-                @include absolute(null, null, 16px, 16px);
-                width: 12px;
-                height: 14px;
-            }
-        }
+    &::after,
+    &::before {
+      content: "";
+      width: 12px;
+      height: 42px;
+      background-image: url(/image/icon11.png);
+      background-size: cover;
+      @include absolute(20px, 86px);
     }
 
-    .top {
-        width: 100%;
-        height: 106px;
-        background-image: url(/image/icon6.png);
-        background-size: cover;
-        @include rowBetween;
-        @include colCenter;
-        padding: 0 40px;
-        @include relative;
-
-        &::after,
-        &::before {
-            content: "";
-            width: 12px;
-            height: 42px;
-            background-image: url(/image/icon11.png);
-            background-size: cover;
-            @include absolute(20px, 86px);
-        }
-
-        &::after {
-            @include absolute(null, 86px, 20px);
-        }
-
-        .item {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            @include colCenter;
-
-            .icon {
-                @include size(47.998px);
-            }
-
-            .name {
-                color: #000;
-                text-align: center;
-                font-family: Rubik;
-                font-size: 12px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 100%;
-                /* 12px */
-            }
-        }
+    &::after {
+      @include absolute(null, 86px, 20px);
     }
 
-    .content {
-        width: 373px;
-        height: 450px;
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      @include colCenter;
+
+      .icon {
+        @include size(47.998px);
+      }
+
+      .name {
+        color: #000;
+        text-align: center;
+        font-family: Rubik;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 100%;
+        /* 12px */
+      }
+    }
+  }
+
+  .content {
+    width: 360px;
+    height: 436px;
+    flex-shrink: 0;
+    background-image: url(/image/icon88.png);
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    @include colCenter;
+    padding-top: 5px;
+    @include relative;
+
+    .frame {
+      @include absolute(0, 0);
+      @include size(100%);
+      pointer-events: none;
+
+      img {
+        &:nth-of-type(1) {
+          @include absolute(0, 272px);
+          transform: translateX(-27px);
+          @include size(52px);
+        }
+
+        &:nth-of-type(2) {
+          @include absolute(314px, 413px);
+          width: 62px;
+          height: 57px;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .title {
+      background: radial-gradient(
+        69.71% 56.25% at 50.34% 75%,
+        #ea3a2d 0%,
+        #eb6e6a 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      -webkit-text-stroke-width: 1;
+      -webkit-text-stroke-color: #000;
+      font-family: "Baloo 2";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 100%;
+      /* 16px */
+      text-transform: uppercase;
+      @include colCenter;
+      @include rowCenter;
+    }
+
+    .canvas {
+      width: 323.998px + 20px;
+      height: 254.998px + 20px;
+      flex-shrink: 0;
+    }
+
+    .times {
+      @include colCenter;
+      gap: 12px;
+      margin-top: 11px;
+      // background-image: url(/image/icon59.png);
+      background-size: 100% 100%;
+      width: 325px;
+      @include rowCenter;
+
+      .label {
+        color: #eb534a;
+        text-align: center;
+        font-family: "Baloo 2";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 100%;
+        /* 16px */
+        text-transform: capitalize;
+      }
+
+      .value {
+        color: #fff;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: #eb534a;
+        font-family: "Baloo 2";
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 94.6%;
+        /* 30.272px */
+        text-transform: uppercase;
+        transform: translateX(3px);
+      }
+      .add {
+        width: 24px;
+        height: 26px;
         flex-shrink: 0;
-        background-image: url(/image/icon55.png);
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        @include colCenter;
-        padding-top: 13px;
-
-        .title {
-            height: 29px;
-            width: 272px;
-            color: #000;
-            text-align: center;
-            font-family: Lemon;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 100%;
-            /* 16px */
-            text-transform: uppercase;
-            border-radius: 8px;
-            border: 2px solid #000;
-            background: #FFF;
-            box-shadow: 0px 2px 0px 0px #000;
-            @include colCenter;
-            @include rowCenter;
-        }
-
-        .canvas {
-            width: 323.998px + 20px;
-            height: 254.998px + 20px;
-            flex-shrink: 0;
-        }
-
-        .times {
-            display: flex;
-            align-items: flex-end;
-            gap: 8px;
-            margin-top: -2px;
-            background-image: url(/image/icon59.png);
-            background-size: 100% 100%;
-            width: 325px;
-            @include rowCenter;
-            .label {
-                color: #000;
-                text-align: center;
-                font-family: Rubik;
-                font-size: 18px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: 18px;
-                /* 18px */
-                text-transform: capitalize;
-            }
-
-            .value {
-                color: #ED5E62;
-                text-align: center;
-                font-family: Poetsen One;
-                font-size: 24px;
-                font-style: normal;
-                font-weight: 400;
-                line-height: 100%;
-                height: 24px;
-                /* 24px */
-                text-transform: capitalize;
-            }
-        }
-
-        .grid {
-            width: 349px;
-            height: 336px;
-            flex-shrink: 0;
-            display: grid;
-            grid-template:
-                "i1 i2 i3 "
-                "i8 btn i4"
-                "i7 i6 i5";
-            padding: 38px 28px;
-            column-gap: 12px;
-            row-gap: 8px;
-            .item {
-                width: 90px;
-                height: 80px;
-                flex-shrink: 0;
-                border-radius: 20px;
-                border: 2px solid #000;
-                background: #FBF0DD;
-                box-shadow: 0px 2px 0px 0px #000;
-                @include colCenter;
-                @include rowCenter;
-                flex-direction: column;
-                gap: 7px;
-
-                .smallIcon {
-                    @include size(34px);
-                }
-
-                .text {
-                    color: #000;
-                    text-align: center;
-                    font-family: Rubik;
-                    font-size: 12px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 100%;
-
-                    /* 12px */
-                }
-
-                &.active {
-                    background-color: #FF473E;
-                    border-color: #fff;
-                    .icon{
-                        @include size(71px)
-                    }
-                }
-
-                &.center {
-                    .text {
-                        color: #FFF;
-                        text-align: center;
-                        text-shadow: 0px 2px 0px #000;
-                        -webkit-text-stroke-width: 3px;
-                        -webkit-text-stroke-color: #000;
-                        font-family: PoetsenOne;
-                        font-size: 44px;
-                        font-style: normal;
-                        font-weight: 700;
-                        line-height: 100%; /* 44px */
-                        text-transform: uppercase;
-                    }
-                }
-            }
-        }
+        transform: translateX(-3px);
+      }
     }
+
+    .grid {
+      position: relative;
+      width: 326px;
+      height: 333px;
+      flex-shrink: 0;
+      flex-shrink: 0;
+      display: grid;
+      grid-template:
+        "i1 i2 i3 "
+        "i8 btn i4"
+        "i7 i6 i5";
+      padding: 5px;
+      padding-bottom: 11px;
+      column-gap: 2px;
+      row-gap: 10px;
+
+      .item {
+        border-radius: 10px;
+        background: #fdf3d8;
+        box-shadow:
+          0px 2px 4px 0px rgba(251, 230, 191, 0.5),
+          0px 6px 0px 0px #f2b069,
+          0px 0px 10px 3px #fadcaa inset;
+        width: 104px;
+        height: 99px;
+        flex-shrink: 0;
+        @include colCenter;
+        @include rowCenter;
+        flex-direction: column;
+
+        .smallIcon {
+          @include size(68px);
+          transform: translateY(-2px);
+        }
+
+        .text {
+          color: #99241b;
+          text-align: center;
+          font-family: "Baloo 2";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 100%;
+          transform: translateY(-5px);
+          /* 16px */
+
+          /* 12px */
+        }
+
+        &.active {
+          border-radius: 10px;
+          border: 4px solid #f44d44;
+          background: #fdf3d8;
+          box-shadow:
+            0px 2px 4px 0px rgba(255, 87, 77, 0.5),
+            0px 6px 0px 0px #bb2719,
+            0px 0px 12px 5px rgba(191, 42, 28, 0.8) inset;
+        }
+
+        &.center {
+          border-radius: 10px;
+          background: linear-gradient(180deg, #ffdb50 0%, #ffe65f 100%);
+          box-shadow:
+            0px 2px 4px 0px rgba(248, 222, 106, 0.6),
+            0px 6px 0px 0px #de9634,
+            0px 0px 10px 3px #f9e377 inset;
+
+          img {
+            width: 60px;
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
 }

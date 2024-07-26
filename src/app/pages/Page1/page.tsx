@@ -9,10 +9,7 @@ const Page = () => {
   return (
     <GamePageLayout className={styles.page}>
       <div className={styles.content}>
-        <Image
-          className={styles.title}
-          src={"image/icon4.png"}
-        />
+        <Image className={styles.title} src={"image/icon82.png"} />
         <Game />
         <div className={styles.wallet}>
           <Wallet />

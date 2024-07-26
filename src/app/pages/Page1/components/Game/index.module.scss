@@ -1,68 +1,69 @@
 .Game {
   display: flex;
   flex-direction: column;
-  gap: 4px;
   width: 100%;
   align-items: center;
   @include pagePaddinX;
   @include relative;
+  transform: translateY(-5px);
 
   .starBox {
     @include absolute(0, 0);
     @include size(100%);
     pointer-events: none;
 
-    .star {
-      &:nth-of-type(1) {
-        @include absolute(34px, null, null, -10px);
-        width: 12px;
-        height: 14px;
-        flex-shrink: 0;
-      }
+    // .star {
+    //   &:nth-of-type(1) {
+    //     @include absolute(34px, null, null, -10px);
+    //     width: 12px;
+    //     height: 14px;
+    //     flex-shrink: 0;
+    //   }
 
-      &:nth-of-type(2) {
-        @include absolute(null, null, 36px, -4px);
-        width: 18px;
-        height: 22px;
-      }
+    //   &:nth-of-type(2) {
+    //     @include absolute(null, null, 36px, -4px);
+    //     width: 18px;
+    //     height: 22px;
+    //   }
 
-      &:nth-of-type(3) {
-        @include absolute(null, null, 24px, 16px);
-        width: 12px;
-        height: 14px;
-      }
-    }
+    //   &:nth-of-type(3) {
+    //     @include absolute(null, null, 24px, 16px);
+    //     width: 12px;
+    //     height: 14px;
+    //   }
+    // }
   }
 
   .top {
     width: 100%;
-    height: 106px;
-    background-image: url(/image/icon6.png);
-    background-size: cover;
+    height: 85px;
+    flex-shrink: 0;
+    background-image: url(/image/icon83.png);
+    background-size: 100% 100%;
     @include rowBetween;
     @include colCenter;
-    padding: 0 40px;
+    padding: 0 48px;
+    padding-left: 40px;
+    padding-top: 2px;
     @include relative;
 
-    &::after,
-    &::before {
-      content: "";
-      width: 12px;
-      height: 42px;
-      background-image: url(/image/icon11.png);
-      background-size: cover;
-      @include absolute(24px, 86px);
-    }
+    // &::after,
+    // &::before {
+    //   content: "";
+    //   width: 12px;
+    //   height: 42px;
+    //   background-image: url(/image/icon11.png);
+    //   background-size: cover;
+    //   @include absolute(24px, 86px);
+    // }
 
-    &::after {
-      @include absolute(null, 86px, 24px);
-    }
+    // &::after {
+    //   @include absolute(null, 86px, 24px);
+    // }
 
     .item {
-      margin-top: -5px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
       @include colCenter;
 
       .icon {
@@ -72,51 +73,70 @@
       .name {
         color: #000;
         text-align: center;
-        font-family: Rubik;
-        font-size: 12px;
+        font-family: "Baloo 2";
+        font-size: 16px;
         font-style: normal;
-        font-weight: 500;
+        font-weight: 700;
         line-height: 100%;
-        /* 12px */
+        /* 16px */
+        margin-top: -px;
       }
     }
   }
 
   .content {
-    height: 376px;
+    height: 340px;
     width: 100%;
-    background-image: url(/image/icon12.png);
+    // background-image: url(/image/icon12.png);
     background-size: cover;
     display: flex;
     flex-direction: column;
-    gap: 12px;
     @include colCenter;
-    padding-top: 13px;
+    padding-top: 11px;
+    @include relative;
+    margin-top: 10px;
+
+    &::after {
+      content: "";
+      width: calc(100vw);
+      @include absolute(-14px, -8px);
+      height: 517px;
+      flex-shrink: 0;
+      background-image: url(/image/icon84.png);
+      background-size: 100% 100%;
+    }
+
+    & > * {
+      @include relative();
+      z-index: 2;
+    }
 
     .title {
-      height: 28px;
-      width: 250px;
-      color: #000;
       text-align: center;
-      font-family: Lemon;
-      font-size: 16px;
+      font-family: "Baloo 2";
+      font-size: 20px;
       font-style: normal;
-      font-weight: 400;
+      font-weight: 800;
       line-height: 100%;
-      /* 16px */
+      /* 20px */
       text-transform: uppercase;
-      border-radius: 8px;
-      border: 2px solid #000;
-      background: #fff;
-      box-shadow: 0px 2px 0px 0px #000;
+      background: radial-gradient(
+        69.71% 56.25% at 50.34% 75%,
+        #ea3a2d 0%,
+        #eb6e6a 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       @include colCenter;
       @include rowCenter;
+      margin-bottom: 11px;
     }
 
     .canvas {
       position: relative;
       width: 344px;
-      height: 277px;
+      height: 275px;
       flex-shrink: 0;
       display: flex;
       justify-content: center;
@@ -128,7 +148,6 @@
       position: relative;
       width: 100%;
       height: 100%;
-      z-index: 1;
     }
 
     .ggl {
@@ -139,43 +158,50 @@
       z-index: 2;
     }
 
+    .times {
+      @include colCenter;
+      margin-top: 4px;
+      margin-left: 4px;
+      gap: 13px;
+
+      .label {
+        color: #eb534a;
+        text-align: center;
+        font-family: "Baloo 2";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 100%;
+        /* 16px */
+        text-transform: capitalize;
+      }
+
+      .value {
+        color: #fff;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: #eb534a;
+        font-family: "Baloo 2";
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 94.6%;
+        /* 30.272px */
+        text-transform: uppercase;
+      }
+
+      .add {
+        width: 24px;
+        height: 26px;
+        flex-shrink: 0;
+        transform: translateX(-3px);
+      }
+    }
+
     .logo {
       width: 100%;
       height: 100%;
       position: relative;
       z-index: 3;
-    }
-
-    .times {
-      display: flex;
-      align-items: flex-end;
-      gap: 8px;
-      margin-top: -4px;
-
-      .label {
-        color: #000;
-        text-align: center;
-        font-family: Rubik;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 18px;
-        /* 18px */
-        text-transform: capitalize;
-      }
-
-      .value {
-        color: #ed5e62;
-        text-align: center;
-        font-family: Poetsen One;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 100%;
-        height: 24px;
-        /* 24px */
-        text-transform: capitalize;
-      }
     }
   }
 

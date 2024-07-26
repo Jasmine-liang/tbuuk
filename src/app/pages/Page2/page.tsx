@@ -13,7 +13,7 @@ const Page = () => {
         <div className={styles.content}>
           <Image
             className={styles.title}
-            src={"image/icon54.png"}
+            src={"image/icon87.png"}
           />
           <Game />
           <div className={styles.wallet}>

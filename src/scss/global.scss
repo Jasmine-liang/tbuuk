@@ -4,16 +4,38 @@
   @include pagePaddinX;
   @include areaBottom;
 }
-
 html,
 body {
-  width: 100%;
-  height: 100vh;
+  @include sizeFull;
   position: fixed;
   top: 0;
-  overflow: hidden;
 }
 
 img {
   display: block;
+}
+
+.ban {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #000000, $alpha: 0.3);
+
+  color: #fff;
+  text-align: center;
+  font-family: "Rubik";
+  font-size: 5.089058524173027vw;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 100%;
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #fe7821;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

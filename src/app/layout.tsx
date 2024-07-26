@@ -12,7 +12,6 @@ export default function RootLayout(props: { children: any }) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         />
-        {/* <script src="/js/ggl.js"></script> */}
       </head>
       <body>{props.children}</body>
     </html>

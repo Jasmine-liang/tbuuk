@@ -1,18 +1,11 @@
 .content {
-    width: 393px;
-    height: 620px;
-    background-image: url(/image/icon21.png);
-    background-size: 100% auto;
-    background-color: #FFC8FF;
-    filter: drop-shadow(0px -4px 0px #FFF);
-    border-radius: 25px 25px 0 0;
-
+    height: 482px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
-    gap: 20px;
-    
+    padding-top: 15px;
+    gap: 10px;
+
     .starBox {
         @include absolute(0, 0);
 
@@ -63,19 +56,9 @@
     }
 
     .title {
-        color: #FFF;
-        text-align: center;
-        text-shadow: 0px 2px 0px #000;
-        -webkit-text-stroke-width: 2px;
-        -webkit-text-stroke-color: #000;
-        font-family: Lemon;
-        font-size: 32px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 32px;
-        /* 32px */
-        text-transform: uppercase;
-        transform: translateY(2px);
+        width: 83px;
+        height: 32px;
+        flex-shrink: 0;
     }
 
     .scrollView {
@@ -90,7 +73,7 @@
         gap: 8px;
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px;
+        margin-bottom: 13px;
 
         .listRed {
             color: #DD2E44;
@@ -102,12 +85,12 @@
         }
 
         .listBlue {
-            color: #5AB5F8;
-            font-family: Rubik;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 100%;
+            color: #5E361C;
+font-family: "Baloo 2";
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 100%; /* 12px */
             /* 16px */
         }
     }

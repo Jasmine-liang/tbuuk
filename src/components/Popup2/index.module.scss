@@ -1,0 +1,48 @@
+.layer {
+    background: rgba(0, 0, 0, 0.70);
+    @include fixed(0, 0);
+    @include size(100%);
+}
+
+.popup {
+    @include fixed(50%, 50%);
+    transform: translate(-50%, -54.8%);
+    
+    .layer1 {
+        border-radius: 50px;
+        border: 1px solid #FFF;
+        background: rgba(255, 255, 255, 0.20);
+        box-shadow: 0px 0px 10px 0px #FFF inset;
+        @include size(calc(100% + 20px));
+        @include fixed(50%, 50%);
+        transform: translate(-50%, -50%);
+        .closeBtn{
+            @include absolute(147px,null,null,0);
+            transform: translateY(66px);
+            @include size(40px)
+        }
+    }
+
+    .layer2 {
+        border-radius: 40px;
+        background-image: radial-gradient(57.26% 41.67% at 50.16% 13.69%, #FFE97A 0%, #FEDD2C 100%);
+        box-shadow: 2px 3px 1px 0px #FFEA78 inset;
+        width: 313px;
+        @include fixed(50%, 50%);
+        transform: translate(-50%, -50%);
+        height: 100%;
+
+    }
+
+    .layer3 {
+        border-radius: 40px;
+        width: 313px;
+        @include relative(0, 0);
+        
+        &>div{
+            overflow: hidden;
+            border-radius: 40px;
+        }
+    }
+    
+}

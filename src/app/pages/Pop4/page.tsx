@@ -1,5 +1,5 @@
 "use client";
-import Popup from "components/Popup";
+import Popup2 from "components/Popup2";
 import styles from "./index.module.scss";
 import Image from "components/Image";
 import ListItem from "components/ListItem";
@@ -27,14 +27,15 @@ const Pop1 = () => {
   const [current, setCurrent] = useState(0);
   return (
     <>
-      <Popup pageName="Pop4" closeClass={``}>
-        <div className={styles.content}>
-          <div className={styles.iconBox}>
-            <Image
+      <Popup2 pageName="Pop4" closeClass={``}>
+        <div className={styles.iconBox}>
+          {/* <Image
               className={styles.icon}
-              src={"image/icon33.png"}
-            />
-          </div>
+              src={"image/icon101.png"}
+            /> */}
+        </div>
+        <div className={styles.content}>
+
           {/* <div className={styles.title}>
                     earn
                 </div> */}
@@ -44,7 +45,9 @@ const Pop1 = () => {
           />
           <div className={styles.scrollView}>
             <div className={styles.cards}>
-              <div className={styles.item}>
+              <Image src="image/icon103.png" />
+              <Image src="image/icon104.png" />
+              {/* <div className={styles.item}>
                 <Image
                   className={styles.icon}
                   src={"image/icon36.png"}
@@ -63,33 +66,52 @@ const Pop1 = () => {
                   <div className={styles.itemTitle}>lucky</div>
                   <div className={styles.itemText}>ticket</div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <Cell title="Partners">
               <div className={styles.grid}>
-                <div className={styles.item}></div>
-                <div className={styles.item}></div>
-                <div className={styles.item}></div>
-                <div className={styles.item}></div>
-                <div className={styles.item}></div>
-                <div className={styles.item}></div>
-                <div className={styles.item}></div>
-                <div className={styles.item}></div>
-                <div className={styles.item}></div>
-                <div className={styles.item}></div>
-                <div className={styles.item}></div>
-                <div className={styles.item}></div>
+                <div className={styles.item}>
+                  <Image src="image/icon108.png" />
+                </div>
+                <div className={styles.item}>
+                  <Image src="image/icon110.png" />
+                </div>
+                <div className={styles.item}>
+                <Image src="image/icon111.png" />
+                </div>
+                <div className={styles.item}>
+                <Image src="image/icon112.png" />
+                </div>
+                <div className={styles.item}>
+                <Image src="image/icon113.png" />
+                </div>
+                <div className={styles.item}>
+                <Image src="image/icon114.png" />
+                </div>
+                <div className={styles.item}>
+                <Image src="image/icon115.png" />
+                </div>
+                <div className={styles.item}>
+                <Image src="image/icon117.png" />
+                </div>
+                <div className={styles.item}>
+                <Image src="image/icon118.png" />
+                </div>
+                <div className={styles.item}>
+                <Image src="image/icon119.png" />
+                </div>
+                
               </div>
             </Cell>
             <Cell
               title="campaign"
-              right={`${current + 1} / ${swiperList.length}`}
+              // right={`${current + 1} / ${swiperList.length}`}
             >
               <div className={styles.swiper + " swiper"}>
                 <div className="swiper-wrapper">
                   {swiperList.map((item, index) => (
                     <div key={index} className={styles.item + " swiper-slide"}>
-                      Slide 1
+                      <Image src="image/icon106.png" />
                     </div>
                   ))}
                 </div>
@@ -98,7 +120,9 @@ const Pop1 = () => {
                     <div
                       key={index}
                       className={`${styles.dotItem} ${current === index ? styles.active : ""}`}
-                    ></div>
+                    >
+
+                    </div>
                   ))}
                 </div>
               </div>
@@ -124,7 +148,7 @@ const Pop1 = () => {
             </Cell>
           </div>
         </div>
-      </Popup>
+      </Popup2>
     </>
   );
 };

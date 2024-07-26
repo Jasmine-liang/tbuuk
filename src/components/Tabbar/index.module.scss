@@ -1,0 +1,19 @@
+.place{
+    height: 76px;
+    @include areaBottom();
+}
+.tabbar {
+    @include colCenter;
+    @include rowBetween;
+    height: 76px;
+    @include areaBottom();
+    padding-left: 37px;
+    padding-right: 36px;
+    border-radius: 20px 20px 0px 0px;
+    background: #FAF7EF;
+    @include fixed(0, null, null,0);
+
+    .item {
+        @include size(28px);
+    }
+}

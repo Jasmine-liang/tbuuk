@@ -1,6 +1,6 @@
 "use client";
 
-import Popup from "components/Popup";
+import Popup2 from "components/Popup2";
 import styles from "./index.module.scss";
 import Image from "components/Image";
 import ListItem from "components/ListItem";
@@ -8,9 +8,9 @@ import Cell from "components/Cell";
 const Pop1 = () => {
   return (
     <>
-      <Popup pageName="Pop3" closeClass={``}>
+      <Popup2 pageName="Pop3" closeClass={``}>
         <div className={styles.content}>
-          <div className={styles.starBox}>
+          {/* <div className={styles.starBox}>
             <Image
               className={styles.star}
               src={"image/icon14.png"}
@@ -43,14 +43,15 @@ const Pop1 = () => {
               className={styles.star}
               src={"image/icon14.png"}
             />
-          </div>
-          <div className={styles.iconBox}>
+          </div> */}
+          {/* <div className={styles.iconBox}>
             <Image
               className={styles.icon}
               src={"image/icon33.png"}
             />
-          </div>
-          <div className={styles.title}>earn</div>
+          </div> */}
+          <Image className={styles.title} src="image/icon100.png"/>
+          {/* <div className={styles.title}>earn</div> */}
           <div className={styles.scrollView}>
             {/* <Cell title="Daily boosters"> */}
             <div className={styles.list}>
@@ -58,13 +59,13 @@ const Pop1 = () => {
                 name="Invite 10 Frens"
                 label="up to 100K"
                 showIcon
-                icon={"image/icon72.png"}
+                icon={"image/icon157.png"}
               />
               <ListItem
                 name="Invite bonus"
                 label="up to 100K"
                 showIcon
-                icon={"image/icon73.png"}
+                icon={"image/icon158.png"}
               >
                 <span className={styles.listBlue}>for fren</span>
               </ListItem>
@@ -76,25 +77,25 @@ const Pop1 = () => {
                   showIcon
                   name="Join Channel"
                   label="+ 3,000"
-                  icon={"image/icon74.png"}
+                  icon={"image/icon159.png"}
                 />
                 <ListItem
                   showIcon
                   name="Follow us on X"
                   label="up to 100K"
-                  icon={"image/icon75.png"}
+                  icon={"image/icon160.png"}
                 />
                 <ListItem
                   showIcon
                   name="Join Telegram channel"
                   label="+ 3,000"
-                  icon={"image/icon76.png"}
+                  icon={"image/icon161.png"}
                 />
               </div>
             </Cell>
           </div>
         </div>
-      </Popup>
+      </Popup2>
     </>
   );
 };

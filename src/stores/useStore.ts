@@ -2,36 +2,44 @@ import { create } from 'zustand';
 
 // 定义状态接口
 interface State {
-    user: any;
-    setUser: (value: any) => void;
+    cardFree: number;
+    addCardFree: () => void;
     showPage: { [key: string]: boolean };
     setShowPage: (key: string, value: boolean) => void;
-    userBalance: any;
-    setUserBalance: (value: any) => void;
-    luckDraw: any;
-    setLuckDraw: (value: any) => void;
-    buyCard: any;
-    setBuyCard: (value: any) => void;
-    createUser: any;
-    setCreateUser: (value: any) => void;
+    balance: number;
+    setBalance: (value: any) => void;
+    userId: string;
+    setUser_id: (value: any) => void;
+    cardCount: number;
+    setCardCount: (value: number) => void;
+    isGame: boolean,
+    setIsGame: (value: boolean) => void;
+    indexGame: number;
+    setIndexGame: (value: number) => void;
 }
 
 // 创建 Zustand 存储
 const useStore = create<State>((set) => ({
-    user: {
-        id: '22'
-    },
-    setUser: (value: any) => set((state) => ({ user: value })),
-    luckDraw: {},
-    setLuckDraw: (value: any) => set((state) => ({ luckDraw: value })),
-    buyCard: {},
-    setBuyCard: (value: any) => set((state) => ({ buyCard: value })),
-    createUser: {},
-    setCreateUser: (value: any) => set((state) => ({ createUser: value })),
+    cardFree: 0,
+    addCardFree: () => set((state) => {
+        if (state.cardFree < 5) {
+            state.setCardCount(state.cardCount + 1);
+            return { cardFree: state.cardFree + 1 };
+        }
+        return { cardFree: state.cardFree }
+    }),
+    indexGame: 0,
+    setIndexGame: (value: any) => set((state) => ({ indexGame: value })),
+    isGame: true,
+    setIsGame: (value: boolean) => set((state) => ({ isGame: value })),
+    userId: "22",
+    setUser_id: (value: any) => set((state) => ({ userId: value })),
+    cardCount: 1,
+    setCardCount: (value: number) => set((state) => ({ cardCount: value })),
     showPage: {},
     setShowPage: (key: string, value: boolean) => set((state) => ({ showPage: { ...state.showPage, [key]: value } })),
-    userBalance: {},
-    setUserBalance: (value: any) => set((state) => ({ userBalance: value })),
+    balance: 150,
+    setBalance: (value: number) => set((state) => ({ balance: value })),
 }));
 
 export default useStore;

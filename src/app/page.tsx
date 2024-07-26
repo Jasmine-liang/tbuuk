@@ -19,28 +19,19 @@ const WebApp =
   typeof window !== "undefined" ? require("@twa-dev/sdk").default : null;
 
 const Page = () => {
-  const { showPage, setUser, setUserBalance } = useStore();
+  const { showPage, setUser_id, setBalance } = useStore();
   const { userBalance, createUser } = useApi();
   const [isWebAppReady, setIsWebAppReady] = useState(false);
 
   const fetchBalance = async (userid: any) => {
     try {
-      const balance = await userBalance({
-        userid: String(userid),
-        profile_photo: "",
-      });
-      setUserBalance(balance);
+      const balance = await userBalance(userid);
+      setBalance(balance);
     } catch (error) {
-      const user = await createUser({
-        userid: String(userid),
-        profile_photo: "",
-      });
+      const user = await createUser(userid);
       if (user) {
-        const balance = await userBalance({
-          userid: String(userid),
-          profile_photo: "",
-        });
-        setUserBalance(balance);
+        const res = await userBalance(userid);
+        setBalance(res.balance);
       }
     }
   };
@@ -54,7 +45,7 @@ const Page = () => {
 
           const user = WebApp.initDataUnsafe.user;
           if (user) {
-            setUser(user);
+            setUser_id(user);
             fetchBalance(user.id);
           }
         } catch (error) {

@@ -1,0 +1,42 @@
+.pop {
+    width: 313px;
+    height: 360px;
+    flex-shrink: 0;
+    background-color: #FFD875;
+    padding-top: 15px;
+    z-index: 2;
+    .title {
+        color: #101010;
+        text-align: center;
+        font-family: "Baloo 2";
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 100%;
+        /* 32px */
+        text-transform: capitalize;
+    }
+
+    .userBox {
+        width: 292px;
+        margin: 20px auto 0;
+    }
+
+    .bottom {
+        width: 313px;
+        height: 158px;
+        flex-shrink: 0;
+        background-color: #FAF7EF;
+        margin-top: 67px;
+        border-radius: 15px 15px 0 0;
+        @include colCenter;
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+        .btn {
+            width: 293px;
+            height: 64px;
+            flex-shrink: 0;
+        }
+    }
+}

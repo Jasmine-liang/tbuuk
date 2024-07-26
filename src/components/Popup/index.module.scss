@@ -1,20 +1,19 @@
 .Popup {
-    background: rgba(0, 0, 0, 0.80);
-    @include fixed(0, 0);
-    @include size(100%);
+  background: rgba(0, 0, 0, 0.8);
+  @include fixed(0, 0);
+  @include size(100%);
 
-    .content {
-        height: max-content;
-        @include absolute(0, null, null, 0);
-        @include areaBottom;
-        box-sizing: content-box;
+  .content {
+    height: max-content;
+    @include absolute(0, null, null, 0);
+    @include areaBottom;
+    box-sizing: content-box;
 
-        .close {
-            width: 26px;
-            height: 26px;
-            flex-shrink: 0;
-            @include absolute(16px, 16px, null, null);
-            z-index: 2;
-        }
+    .close {
+      @include size(40px);
+      flex-shrink: 0;
+      @include absolute(16px, 20px, null, null);
+      z-index: 2;
     }
+  }
 }
