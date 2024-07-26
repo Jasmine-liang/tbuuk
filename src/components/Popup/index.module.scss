@@ -4,7 +4,8 @@
   @include size(100%);
 
   .content {
-    height: max-content;
+    height: 100%;
+    width: 100%;
     @include absolute(0, null, null, 0);
     @include areaBottom;
     box-sizing: content-box;

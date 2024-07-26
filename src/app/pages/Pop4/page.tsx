@@ -5,9 +5,14 @@ import Image from "components/Image";
 import ListItem from "components/ListItem";
 import Cell from "components/Cell";
 import Swiper from "swiper";
+import useStore from "@/stores/useStore";
 import { useEffect, useState } from "react";
 import "swiper/swiper-bundle.css";
 const Pop1 = () => {
+  const { balance, setBalance, setShowPage } = useStore();
+  const swiperList = [1, 2, 3];
+  const [current, setCurrent] = useState(0);
+
   useEffect(() => {
     var mySwiper = new Swiper(`.${styles.swiper}`, {
       // loop: true, // 循环模式选项
@@ -23,50 +28,28 @@ const Pop1 = () => {
       },
     });
   }, []);
-  const swiperList = [1, 2, 3];
-  const [current, setCurrent] = useState(0);
   return (
     <>
       <Popup2 pageName="Pop4" closeClass={``}>
-        <div className={styles.iconBox}>
-          {/* <Image
-              className={styles.icon}
-              src={"image/icon101.png"}
-            /> */}
-        </div>
+        <div className={styles.iconBox}></div>
         <div className={styles.content}>
-
-          {/* <div className={styles.title}>
-                    earn
-                </div> */}
-          <Image
-            className={styles.title}
-            src={"image/icon34.png"}
-          />
+          <Image className={styles.title} src={"image/icon34.png"} />
           <div className={styles.scrollView}>
             <div className={styles.cards}>
-              <Image src="image/icon103.png" />
-              <Image src="image/icon104.png" />
-              {/* <div className={styles.item}>
-                <Image
-                  className={styles.icon}
-                  src={"image/icon36.png"}
-                />
-                <div className={styles.itemContent}>
-                  <div className={styles.itemTitle}>lucky</div>
-                  <div className={styles.itemText}>ticket</div>
-                </div>
+              <div
+                onClick={() => {
+                  setShowPage("Swap", true);
+                }}
+              >
+                <Image src="image/icon103.png" />
               </div>
-              <div className={styles.item}>
-                <Image
-                  className={styles.icon}
-                  src={"image/icon38.png"}
-                />
-                <div className={styles.itemContent}>
-                  <div className={styles.itemTitle}>lucky</div>
-                  <div className={styles.itemText}>ticket</div>
-                </div>
-              </div> */}
+              <div
+                onClick={() => {
+                  setShowPage("Swap", true);
+                }}
+              >
+                <Image src="image/icon104.png" />
+              </div>
             </div>
             <Cell title="Partners">
               <div className={styles.grid}>
@@ -77,36 +60,32 @@ const Pop1 = () => {
                   <Image src="image/icon110.png" />
                 </div>
                 <div className={styles.item}>
-                <Image src="image/icon111.png" />
+                  <Image src="image/icon111.png" />
                 </div>
                 <div className={styles.item}>
-                <Image src="image/icon112.png" />
+                  <Image src="image/icon112.png" />
                 </div>
                 <div className={styles.item}>
-                <Image src="image/icon113.png" />
+                  <Image src="image/icon113.png" />
                 </div>
                 <div className={styles.item}>
-                <Image src="image/icon114.png" />
+                  <Image src="image/icon114.png" />
                 </div>
                 <div className={styles.item}>
-                <Image src="image/icon115.png" />
+                  <Image src="image/icon115.png" />
                 </div>
                 <div className={styles.item}>
-                <Image src="image/icon117.png" />
+                  <Image src="image/icon117.png" />
                 </div>
                 <div className={styles.item}>
-                <Image src="image/icon118.png" />
+                  <Image src="image/icon118.png" />
                 </div>
                 <div className={styles.item}>
-                <Image src="image/icon119.png" />
+                  <Image src="image/icon119.png" />
                 </div>
-                
               </div>
             </Cell>
-            <Cell
-              title="campaign"
-              // right={`${current + 1} / ${swiperList.length}`}
-            >
+            <Cell title="campaign">
               <div className={styles.swiper + " swiper"}>
                 <div className="swiper-wrapper">
                   {swiperList.map((item, index) => (
@@ -120,9 +99,7 @@ const Pop1 = () => {
                     <div
                       key={index}
                       className={`${styles.dotItem} ${current === index ? styles.active : ""}`}
-                    >
-
-                    </div>
+                    ></div>
                   ))}
                 </div>
               </div>

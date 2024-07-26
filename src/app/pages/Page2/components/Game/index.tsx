@@ -7,55 +7,70 @@ import useStore from "@/stores/useStore";
 import styles from "./index.module.scss";
 
 const Game = () => {
+  const maxIdx = DATA.page2.list.length;
   const { luckDraw } = useApi();
-  const { userId, cardCount, setCardCount } = useStore();
+  const {
+    userId,
+    cardCount,
+    setCardCount,
+    cardFree,
+    resetCountdown,
+    startCountdown,
+  } = useStore();
   const [isGame, setIsGame] = useState(0);
+  const [timeGame, setTimeGame] = useState(100);
   const [indexGame, setIndexGame] = useState(0);
-  const [remainingTimes, setRemainingTimes] = useState(10);
-  const intervalRef = useRef<number | undefined>(undefined);
+  const [countGame, setCountGame] = useState(0);
+  const [indexResult, setIndexResult] = useState(-1);
+  const [textResult, setTextResult] = useState("");
+  const formattedTime = useStore((state) => state.formattedTime);
 
   useEffect(() => {
-    return () => clearInterval(intervalRef.current);
-  }, []);
-
-  console.log(cardCount);
-
-  const startGame = (result: any) => {
-    let maxIdx = DATA.page2.list.length;
-    let n = 3 * maxIdx + Number(result.number); // 旋转的总次数
-    let idx = indexGame;
-    clearInterval(intervalRef.current);
-    if (typeof window !== "undefined") {
-      intervalRef.current = window.setInterval(() => {
-        if (n === 0) {
-          clearInterval(intervalRef.current);
-          endGame(result);
-          return;
+    if (isGame && timeGame) {
+      setTimeout(() => {
+        if (timeGame != 200 && countGame > 2 * maxIdx) {
+          setTimeGame(200);
         }
-        setIndexGame(idx);
-        idx = (idx + 1) % maxIdx;
-        n--;
-      }, 200);
-    }
-  };
 
-  const endGame = (result: any) => {
+        if (countGame > 3 * maxIdx && indexGame === indexResult) {
+          endGame();
+        } else {
+          setCountGame(countGame + 1);
+          setIndexGame((indexGame + 1) % maxIdx);
+        }
+      }, timeGame);
+    }
+  }, [isGame, indexGame, timeGame, indexResult, countGame]);
+
+  const endGame = () => {
     setIsGame(0);
-    setIndexGame(0);
-    alert(result.prize);
+    setCountGame(0);
+    setTimeGame(100);
+    setIndexResult(-1);
+    setIndexResult(-1);
+    alert(textResult);
   };
 
   const handleClick = async () => {
     if (isGame) return;
-    setCardCount(cardCount - 1);
     setIsGame(1);
+    setCardCount(cardCount - 1);
     const result = await luckDraw({
       userid: String(userId),
       profile_photo: "",
       playmode: "2",
     });
     if (!result) alert(result.error);
-    startGame(result);
+    setIndexResult(Number(result.number));
+    setTextResult(result.prize);
+  };
+
+  const addFreeCard = async () => {
+    console.log(cardFree);
+    if (5 - cardFree > 0) {
+      resetCountdown();
+      startCountdown();
+    }
   };
 
   return (
@@ -92,8 +107,12 @@ const Game = () => {
         </div>
         <div className={styles.times}>
           <div className={styles.label}>remaining times:</div>
-          <div className={styles.value}>{remainingTimes}</div>
-          <Image className={styles.add} src="image/icon162.png" />
+          <div className={styles.value}>{formattedTime()}</div>
+          <Image
+            onClick={addFreeCard}
+            className={styles.add}
+            src="image/icon162.png"
+          />
         </div>
       </div>
     </div>

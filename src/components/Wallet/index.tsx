@@ -18,10 +18,17 @@ const Wallet = () => {
   const userFriendlyAddress = useTonAddress();
   const { setShowPage, showPage } = useStore();
   const { state, open, close }: any = useTonConnectModal();
+  const handleWallet = () => {
+    if (wallet) {
+      open();
+    } else {
+      setShowPage("Pop6", true);
+    }
+  };
 
   return (
     <div className={styles.Wallet}>
-      <div className={`${styles.item} ${styles.left}`} onClick={open}>
+      <div className={`${styles.item} ${styles.left}`} onClick={handleWallet}>
         {wallet ? (
           <div className={styles.blockies}>
             <Blockies

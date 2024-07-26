@@ -5,19 +5,13 @@ import Image from "components/Image";
 import Popup2 from "components/Popup2";
 import ListItem from "components/ListItem";
 import useStore from "@/stores/useStore";
+import { useState } from "react";
 
 const Pop1 = () => {
-  const {
-    cardFree,
-    addCardFree,
-    cardCount,
-    setCardCount,
-    balance,
-    setBalance,
-  } = useStore();
+  const formattedTime = useStore((state) => state.formattedTime);
+  const { cardFree, cardCount, setCardCount, balance, setBalance } = useStore();
 
   const handleAddCard = () => {
-    console.log(balance);
     setBalance(balance - 150);
     setCardCount(cardCount + 1);
   };
@@ -28,7 +22,7 @@ const Pop1 = () => {
         <Image className={styles.title} src="image/icon99.png" />
         <Cell title="Daily boosters">
           <div className={styles.list}>
-            <div className={styles.cardBox} onClick={addCardFree}>
+            <div className={styles.cardBox}>
               <ListItem
                 name="Daily Free Scratch Cards"
                 label={cardFree + " / " + 5 + " available"}
@@ -41,7 +35,7 @@ const Pop1 = () => {
               label="Next free card"
               icon={"image/icon155.png"}
             >
-              <span className={styles.listRed}>09:33</span>
+              <span className={styles.listRed}>{formattedTime()}</span>
             </ListItem>
           </div>
         </Cell>

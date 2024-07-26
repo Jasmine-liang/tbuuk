@@ -148,6 +148,7 @@
       position: relative;
       width: 100%;
       height: 100%;
+      object-fit: contain;
     }
 
     .ggl {
@@ -177,6 +178,7 @@
       }
 
       .value {
+        width: 100px;
         color: #fff;
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: #eb534a;

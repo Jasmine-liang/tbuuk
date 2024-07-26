@@ -9,6 +9,7 @@ import Pop3 from "./pages/Pop3/page";
 import Pop4 from "./pages/Pop4/page";
 import Pop5 from "./pages/Pop5/page";
 import Pop6 from "./pages/Pop6/page";
+import Swap from "./pages/Swap/page";
 import useStore from "@/stores/useStore";
 import { useApi } from "@/hooks/useApi";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
@@ -19,9 +20,34 @@ const WebApp =
   typeof window !== "undefined" ? require("@twa-dev/sdk").default : null;
 
 const Page = () => {
-  const { showPage, setUserId, setBalance } = useStore();
+  const {
+    showPage,
+    setUserId,
+    setBalance,
+    cardFree,
+    isRunning,
+    addCardFree,
+    startCountdown,
+    resetCountdown,
+  } = useStore();
   const { userBalance, createUser } = useApi();
   const [isWebAppReady, setIsWebAppReady] = useState(false);
+
+  const tick = useStore((state) => state.tick);
+  useEffect(() => {
+    let interval = null;
+    if (isRunning) {
+      interval = setInterval(() => {
+        tick(() => {
+          console.log("倒计时结束");
+          addCardFree();
+        });
+      }, 1000);
+    } else if (!isRunning && interval) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval || "");
+  }, [isRunning, tick]);
 
   const fetchBalance = async (id: any) => {
     try {
@@ -63,6 +89,8 @@ const Page = () => {
       };
 
       initWebApp();
+      console.log(1111);
+      startCountdown();
     }
   }, []);
 
@@ -74,16 +102,15 @@ const Page = () => {
 
   return (
     <TonConnectUIProvider manifestUrl={manifestUrl}>
-      <div>
-        <Page1 />
-        {showPage["Page2"] && <Page2 />}
-        {showPage["Pop1"] && <Pop1 />}
-        {showPage["Pop2"] && <Pop2 />}
-        {showPage["Pop3"] && <Pop3 />}
-        {showPage["Pop4"] && <Pop4 />}
-        {showPage["Pop5"] && <Pop5 />}
-        {showPage["Pop6"] && <Pop6 />}
-      </div>
+      <Page1 />
+      {showPage["Page2"] && <Page2 />}
+      {showPage["Pop2"] && <Pop2 />}
+      {showPage["Pop3"] && <Pop3 />}
+      {showPage["Pop1"] && <Pop1 />}
+      {showPage["Pop5"] && <Pop5 />}
+      {showPage["Pop6"] && <Pop6 />}
+      {showPage["Pop4"] && <Pop4 />}
+      {showPage["Swap"] && <Swap />}
     </TonConnectUIProvider>
   );
 };

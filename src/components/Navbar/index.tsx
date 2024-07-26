@@ -1,14 +1,20 @@
-import Image from "../Image"
-import styles from "./index.module.scss"
-const Navbar = ({title}:any) => {
+import Image from "../Image";
+import styles from "./index.module.scss";
+import useStore from "@/stores/useStore";
+const Navbar = ({ title }: any) => {
+  const { setShowPage } = useStore();
+  return (
+    <div className={styles.navBar}>
+      <div
+        onClick={() => {
+          setShowPage("Swap", false);
+        }}
+      >
+        <Image src="image/icon123.png" />
+      </div>
+      {title}
+    </div>
+  );
+};
 
-
-    return <>
-        <div className={styles.navBar}>
-            <Image src="image/icon123.png"/>
-            {title}
-        </div>
-    </>
-}
-
-export default Navbar
+export default Navbar;

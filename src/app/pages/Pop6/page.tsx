@@ -7,47 +7,12 @@ import ListItem from "components/ListItem";
 import Cell from "components/Cell";
 import useStore from "@/stores/useStore";
 const Pop6 = () => {
-  const { setShowPage } = useStore();
+  const { balance, cardCount, setShowPage } = useStore();
   return (
     <Popup2 pageName="Pop6" closeClass={styles.close}>
       <Image className={styles.userIcon} src={"image/icon120.png"} />
       <Image className={styles.bg} src="image/icon163.png" />
       <div className={styles.content}>
-        {/* <div className={styles.starBox}>
-          <Image
-            className={styles.star}
-            src={"image/icon14.png"}
-          />
-          <Image
-            className={styles.star}
-            src={"image/icon14.png"}
-          />
-          <Image
-            className={styles.star}
-            src={"image/icon14.png"}
-          />
-          <Image
-            className={styles.star}
-            src={"image/icon14.png"}
-          />
-          <Image
-            className={styles.star}
-            src={"image/icon14.png"}
-          />
-          <Image
-            className={styles.star}
-            src={"image/icon14.png"}
-          />
-          <Image
-            className={styles.star}
-            src={"image/icon14.png"}
-          />
-          <Image
-            className={styles.star}
-            src={"image/icon14.png"}
-          />
-        </div> */}
-
         <div className={styles.more}>
           WISE Score
           <Image className={styles.moreIcon} src={"image/icon53.png"} />
@@ -66,19 +31,19 @@ const Pop6 = () => {
                 <div className={styles.r1}></div>
                 <div className={styles.text1}>TPoints</div>
               </div>
-              <div className={styles.text2}>6,800</div>
+              <div className={styles.text2}>{balance}</div>
             </div>
             <div className={styles.item}>
               <div className={styles.left}>
                 <div className={styles.r1}></div>
-                <div className={styles.text1}>1 scratch cards</div>
+                <div className={styles.text1}>{cardCount} scratch cards</div>
               </div>
               <div className={styles.r2}></div>
             </div>
           </div>
           <Image
             onClick={() => {
-              setShowPage("pop6", false);
+              setShowPage("Pop4", true);
             }}
             src={"image/icon122.png"}
             className={styles.btn}

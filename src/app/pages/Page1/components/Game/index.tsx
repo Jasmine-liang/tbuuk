@@ -7,15 +7,60 @@ import { useEffect, useState } from "react";
 import DATA from "@/configs/data";
 
 const Game = () => {
-  const gameInit = () => {
+  const { luckDraw } = useApi();
+  const {
+    userId,
+    cardCount,
+    setCardCount,
+    cardFree,
+    resetCountdown,
+    startCountdown,
+  } = useStore();
+  const [isGame, setIsGame] = useState(0);
+  const [indexResult, setIndexResult] = useState(-1);
+  const [textResult, setTextResult] = useState("");
+  const formattedTime = useStore((state) => state.formattedTime);
+
+  const addFreeCard = async () => {
+    console.log(cardFree);
+    if (5 - cardFree > 0) {
+      resetCountdown();
+      startCountdown();
+    }
+  };
+
+  const getResult = async () => {
+    setCardCount(cardCount - 1);
+    const res = await luckDraw({
+      userid: String(userId),
+      profile_photo: "",
+      playmode: "1",
+    });
+    setIndexResult(res.number);
+    setTextResult(res.prize);
+  };
+
+  useEffect(() => {
+    if (isGame === 1) {
+      getResult();
+    }
+  }, [isGame]);
+
+  useEffect(() => {
+    if (isGame === 2 && textResult) {
+      alert(textResult);
+    }
+  }, [isGame, textResult]);
+
+  useEffect(() => {
     const canvas = document.getElementById("ggl") as HTMLCanvasElement;
     const ctx = canvas.getContext("2d")!;
     const container = document.getElementById("container")!;
 
     // Configuration parameters
-    const brushSize = window.innerWidth * 0.05; // Set brush size
-    const revealThreshold = 0.5; // Set reveal threshold ratio, 0.5 means 50%
-    const resetTime = 2000; // Set reset time to 2 seconds
+    const brushSize = window.innerWidth * 0.05;
+    const revealThreshold = 0.5;
+    const resetTime = 2000;
 
     // Set canvas size to match container
     canvas.width = container.offsetWidth;
@@ -26,7 +71,6 @@ const Game = () => {
     coverImage.src = "/image/page1-logo.png"; // Surface image URL
     coverImage.onload = () => {
       ctx.drawImage(coverImage, 0, 0, canvas.width, canvas.height);
-      console.log("Image loaded and drawn");
     };
 
     // Listen for mouse events
@@ -47,6 +91,7 @@ const Game = () => {
     }
 
     function startDrawing(evt: MouseEvent | Touch): void {
+      setIsGame(1);
       isDrawing = true;
       draw(evt);
     }
@@ -55,6 +100,14 @@ const Game = () => {
       isDrawing = false;
       ctx.beginPath();
       checkReveal();
+    }
+
+    function resetGame(): void {
+      setIndexResult(-1);
+      ctx.globalCompositeOperation = "source-over";
+      canvas.width = container.offsetWidth;
+      canvas.height = container.offsetHeight;
+      ctx.drawImage(coverImage, 0, 0, canvas.width, canvas.height);
     }
 
     function draw(evt: MouseEvent | Touch): void {
@@ -81,17 +134,12 @@ const Game = () => {
       const revealRatio = transparentPixels / (canvas.width * canvas.height);
       if (revealRatio > revealThreshold) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        console.log("Reveal threshold reached, clearing canvas");
-
-        // Set reset time
         setTimeout(() => {
-          // Reset globalCompositeOperation
-          ctx.globalCompositeOperation = "source-over";
-          // Ensure canvas size matches container
-          canvas.width = container.offsetWidth;
-          canvas.height = container.offsetHeight;
-          ctx.drawImage(coverImage, 0, 0, canvas.width, canvas.height);
-          console.log("Reset time reached, redrawing image");
+          setIsGame(2);
+        }, 1);
+        setTimeout(() => {
+          setIsGame(0);
+          resetGame();
         }, resetTime);
       }
     }
@@ -109,30 +157,6 @@ const Game = () => {
       draw(evt.touches[0]);
       evt.preventDefault();
     });
-  };
-
-  const { userId, cardCount, setCardCount } = useStore();
-  const [isGame, setIsGame] = useState(0);
-  const { luckDraw } = useApi();
-  const [result, setResult] = useState(DATA.page1);
-
-  const startGame = async () => {
-    if (isGame) return;
-    setIsGame(1);
-    setCardCount(cardCount - 1);
-    const res = await luckDraw({
-      userid: String(userId),
-      profile_photo: "",
-      playmode: "1",
-    });
-
-    if (res) {
-      setResult(res);
-    }
-  };
-
-  useEffect(() => {
-    gameInit();
   }, []);
 
   const list = [
@@ -180,17 +204,11 @@ const Game = () => {
             className={styles.ggl}
             style={{ width: "100%", height: "100%" }}
           ></canvas>
-          {result.number ? (
+          {indexResult != -1 && (
             <ImageU
               className={styles.prize}
-              src={DATA.page1.list[Number(result.number) - 1].icon}
+              src={DATA.page1.list[indexResult - 1].icon}
             />
-          ) : (
-            <div
-              className={styles.logo}
-              onTouchStart={startGame}
-              onMouseUp={startGame}
-            ></div>
           )}
           {!cardCount && !isGame && (
             <div className="ban">
@@ -200,8 +218,12 @@ const Game = () => {
         </div>
         <div className={styles.times}>
           <div className={styles.label}>remaining times:</div>
-          <div className={styles.value}>10</div>
-          <ImageU className={styles.add} src="image/icon162.png" />
+          <div className={styles.value}>{formattedTime()}</div>
+          <ImageU
+            onClick={addFreeCard}
+            className={styles.add}
+            src="image/icon162.png"
+          />
         </div>
       </div>
     </div>

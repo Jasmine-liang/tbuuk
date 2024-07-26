@@ -1,47 +1,47 @@
 .Success {
-    height: 100vh;
-    width: 100vw;
-    background-color: #FFD875;
-    @include fixed(0, 0);
-    padding-top: 176px;
-    z-index: 2;
-    .icon {
-        @include size(80px);
-        margin: 0 auto;
-    }
+  height: 100%;
+  width: 100%;
+  background-color: #ffd875;
+  @include fixed(0, 0);
+  padding-top: 176px;
+  z-index: 2;
+  .icon {
+    @include size(80px);
+    margin: 0 auto;
+  }
 
-    .title {
-        color: #101010;
-        text-align: center;
-        font-family: "Baloo 2";
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 800;
-        line-height: 100%;
-        /* 24px */
-        margin-top: 36px;
-    }
+  .title {
+    color: #101010;
+    text-align: center;
+    font-family: "Baloo 2";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 100%;
+    /* 24px */
+    margin-top: 36px;
+  }
 
-    .text {
-        color: #5E361C;
-        text-align: center;
-        font-family: "Baloo 2";
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 100%;
-        /* 16px */
-        width: 264px;
-        margin:  22px auto 0;
-    }
-    .userBox{
-        width: 361px;
-        margin:  26px auto 0;
-    }
-    .btnBox{
-        width: 361px;
-        margin:  26px auto 0;
-        @include fixed(16px,null,null,16px);
-        @include areaBottom;
-    }
+  .text {
+    color: #5e361c;
+    text-align: center;
+    font-family: "Baloo 2";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    /* 16px */
+    width: 264px;
+    margin: 22px auto 0;
+  }
+  .userBox {
+    width: 361px;
+    margin: 26px auto 0;
+  }
+  .btnBox {
+    width: 361px;
+    margin: 26px auto 0;
+    @include fixed(16px, null, null, 16px);
+    @include areaBottom;
+  }
 }

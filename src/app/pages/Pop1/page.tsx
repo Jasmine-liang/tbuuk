@@ -17,29 +17,26 @@ const Pop1 = () => {
     <>
       <Popup2 pageName="Pop1">
         <div className={styles.content}>
-          {/* <div className={styles.starBox}>
-            <Image className={styles.star} src={"image/icon14.png"} />
-            <Image className={styles.star} src={"image/icon14.png"} />
-            <Image className={styles.star} src={"image/icon14.png"} />
-          </div> */}
-          {/* <div className={styles.iconBox}>
-            <Image className={styles.icon} src={"image/icon22.png"} />
-          </div> */}
           <Image className={styles.title} src={"image/icon95.png"} />
-          {/* <div className={styles.title}>invite friends</div> */}
           <div className={styles.list}>
-            <ListItem
-              name="Invite a Fren"
-              showIcon
-              label="Earn 500"
-              icon={"image/icon152.png"}
-            />
-            <ListItem
-              name="Invite a Premium Fren"
-              showIcon
-              label="Earn 500"
-              icon={"image/icon153.png"}
-            />
+            <div className={styles.cardBox} onClick={() => {}}>
+              <ListItem
+                name="Invite a Fren"
+                showIcon
+                label="Earn 500"
+                icon={"image/icon152.png"}
+              />
+              <div className={false ? "ban" : ""}></div>
+            </div>
+            <div className={styles.cardBox} onClick={() => {}}>
+              <ListItem
+                name="Invite a Premium Fren"
+                showIcon
+                label="Earn 500"
+                icon={"image/icon153.png"}
+              />
+              <div className={false ? "ban" : ""}></div>
+            </div>
           </div>
           <Cell title="Friends Boosting">
             <div className={styles.tip}>

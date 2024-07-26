@@ -1,9 +1,8 @@
 .page {
   --bgColor: #e2472c;
-  // --bg1: url(/image/icon2.png);
   --bg2: url(/image/icon86.png);
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 
   .content {
     display: flex;
@@ -24,9 +23,9 @@
     .wallet {
       position: relative;
       z-index: 1;
-      width: 380px;
+      width: 100%;
       margin-top: 35px;
-      transform: translateY(14px);
+      transform: translateY(15px);
     }
   }
 }
