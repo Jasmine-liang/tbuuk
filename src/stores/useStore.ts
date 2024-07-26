@@ -9,7 +9,7 @@ interface State {
     balance: number;
     setBalance: (value: any) => void;
     userId: string;
-    setUser_id: (value: any) => void;
+    setUserId: (value: any) => void;
     cardCount: number;
     setCardCount: (value: number) => void;
     isGame: boolean,
@@ -33,7 +33,7 @@ const useStore = create<State>((set) => ({
     isGame: true,
     setIsGame: (value: boolean) => set((state) => ({ isGame: value })),
     userId: "22",
-    setUser_id: (value: any) => set((state) => ({ userId: value })),
+    setUserId: (value: any) => set((state) => ({ userId: value })),
     cardCount: 1,
     setCardCount: (value: number) => set((state) => ({ cardCount: value })),
     showPage: {},
