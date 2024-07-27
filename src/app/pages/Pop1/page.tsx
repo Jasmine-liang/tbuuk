@@ -46,18 +46,18 @@ const Pop1 = () => {
           <div className={styles.bottom}>
             <div className={styles.btns}>
               <div className={styles.item}>
-                <InviteFriendsButton />
+                {/* <InviteFriendsButton /> */}
               </div>
               <div className={styles.item}>
-                <CopyLinkButton />
+                {/* <CopyLinkButton /> */}
               </div>
 
               <div className={styles.item}>
-                <ExternalLinkButton />
+                {/* <ExternalLinkButton /> */}
               </div>
             </div>
             <div>
-              <ShareLinkButton />
+              {/* <ShareLinkButton /> */}
             </div>
           </div>
         </div>

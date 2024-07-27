@@ -12,12 +12,12 @@ const ExternalLinkButton: React.FC = () => {
     return navigator.share !== undefined;
   }
 
-
   const handleCopyLink = async () => {
 
     if (typeof window !== "undefined") {
       if (isWebShareSupported()) {
         try {
+          console.log("moreeee")
           await navigator.share({
             title: 'Check this out!',
             text: 'Here is something interesting I found.',

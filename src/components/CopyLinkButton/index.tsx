@@ -9,9 +9,10 @@ import Image from "components/Image";
 const CopyLinkButton: React.FC = () => {
 
   const handleCopyLink = () => {
+
     const link = `https://t.me/tbook_incentive_bot?start=50636747698965`;
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
-
+console.log("i'm in!!!")
       navigator.clipboard.writeText(link).then(() => {
         console.log('Link copied to clipboard!');
         if (typeof window !== "undefined") {

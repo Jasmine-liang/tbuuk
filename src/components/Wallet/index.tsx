@@ -19,7 +19,8 @@ const Wallet = () => {
   const { setShowPage, showPage } = useStore();
   const { state, open, close }: any = useTonConnectModal();
   const handleWallet = () => {
-    if (wallet) {
+    console.log(wallet)
+    if (!wallet) {
       open();
     } else {
       setShowPage("Pop6", true);
