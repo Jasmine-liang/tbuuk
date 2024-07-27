@@ -45,15 +45,11 @@ const Pop1 = () => {
           </Cell>
           <div className={styles.bottom}>
             <div className={styles.btns}>
-              <div className={styles.item}>
+              <div >
                 <InviteFriendsButton />
-                <button onClick={()=> console.log("invite friend")}>啊阿啊</button>
-                <p>adasdasdasdasd</p>
               </div>
               <div >
                 <CopyLinkButton />
-                <p>adasdasdasdasd</p>
-
               </div>
               <div >
                 <ExternalLinkButton />
