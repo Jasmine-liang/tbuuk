@@ -45,13 +45,13 @@ const Pop1 = () => {
           </Cell>
           <div className={styles.bottom}>
             <div className={styles.btns}>
-              <div >
+              <div className={styles.item}>
                 <InviteFriendsButton />
               </div>
-              <div >
+              <div className={styles.item}>
                 <CopyLinkButton />
               </div>
-              <div >
+              <div className={styles.item}>
                 <ExternalLinkButton />
               </div>
             </div>
