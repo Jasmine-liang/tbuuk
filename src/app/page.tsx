@@ -14,12 +14,11 @@ import useStore from "@/stores/useStore";
 import { useApi } from "@/hooks/useApi";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
 import { manifestUrl } from "@/configs/index";
-import WebApp from '@twa-dev/sdk';
 
 
 // 动态导入 WebApp，确保它只在客户端加载
-// const WebApp =
-//   typeof window !== "undefined" ? require("@twa-dev/sdk").default : null;
+const WebApp =
+  typeof window !== "undefined" ? require("@twa-dev/sdk").default : null;
 
 const Page = () => {
   const {

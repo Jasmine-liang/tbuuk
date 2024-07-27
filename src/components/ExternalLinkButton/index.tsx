@@ -12,12 +12,12 @@ const ExternalLinkButton: React.FC = () => {
     return navigator.share !== undefined;
   }
 
-  const handleCopyLink = async () => {
-
+  const handleExternalLink = async () => {
+    console.log("moreeee")
+    
     if (typeof window !== "undefined") {
       if (isWebShareSupported()) {
         try {
-          console.log("moreeee")
           await navigator.share({
             title: 'Check this out!',
             text: 'Here is something interesting I found.',
@@ -38,7 +38,7 @@ const ExternalLinkButton: React.FC = () => {
 
   return (
     <>
-      <button className={styles.IconBox} onClick={handleCopyLink}>
+      <button className={styles.IconBox} onClick={handleExternalLink }>
         <Image
           className={styles.icon}
           src={"image/icon28.png"}
