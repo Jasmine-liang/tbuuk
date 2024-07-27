@@ -46,10 +46,12 @@ const Pop1 = () => {
           <div className={styles.bottom}>
             <div className={styles.btns}>
               <div className={styles.item}>
-                <InviteFriendsButton />
+                {/* <InviteFriendsButton /> */}
+                <button onClick={()=> console.log("invite friend")}>invite friend</button>
               </div>
               <div className={styles.item}>
-                <CopyLinkButton />
+                {/* <CopyLinkButton /> */}
+                <button onClick={()=> console.log("copy link")}>copy link</button>
               </div>
 
               <div className={styles.item}>
