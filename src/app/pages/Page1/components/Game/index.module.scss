@@ -6,32 +6,12 @@
   @include pagePaddinX;
   @include relative;
   transform: translateY(-5px);
+  overflow: hidden;
 
   .starBox {
     @include absolute(0, 0);
     @include size(100%);
     pointer-events: none;
-
-    // .star {
-    //   &:nth-of-type(1) {
-    //     @include absolute(34px, null, null, -10px);
-    //     width: 12px;
-    //     height: 14px;
-    //     flex-shrink: 0;
-    //   }
-
-    //   &:nth-of-type(2) {
-    //     @include absolute(null, null, 36px, -4px);
-    //     width: 18px;
-    //     height: 22px;
-    //   }
-
-    //   &:nth-of-type(3) {
-    //     @include absolute(null, null, 24px, 16px);
-    //     width: 12px;
-    //     height: 14px;
-    //   }
-    // }
   }
 
   .top {
@@ -46,20 +26,6 @@
     padding-left: 40px;
     padding-top: 2px;
     @include relative;
-
-    // &::after,
-    // &::before {
-    //   content: "";
-    //   width: 12px;
-    //   height: 42px;
-    //   background-image: url(/image/icon11.png);
-    //   background-size: cover;
-    //   @include absolute(24px, 86px);
-    // }
-
-    // &::after {
-    //   @include absolute(null, 86px, 24px);
-    // }
 
     .item {
       display: flex;
@@ -85,7 +51,6 @@
   }
 
   .content {
-    height: 340px;
     width: 100%;
     // background-image: url(/image/icon12.png);
     background-size: cover;
@@ -93,10 +58,11 @@
     flex-direction: column;
     @include colCenter;
     padding-top: 11px;
+    padding-bottom: 25px;
     @include relative;
     margin-top: 10px;
 
-    &::after {
+    &::before {
       content: "";
       width: calc(100vw);
       @include absolute(-14px, -8px);
@@ -108,7 +74,6 @@
 
     & > * {
       @include relative();
-      z-index: 2;
     }
 
     .title {

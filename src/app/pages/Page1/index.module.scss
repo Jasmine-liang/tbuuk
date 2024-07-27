@@ -17,8 +17,10 @@
   }
 
   .wallet {
+    position: relative;
+    z-index: 11;
     width: 100%;
-    margin-top: 43px;
+    margin-top: 7px;
     transform: translateY(15px);
   }
 }
