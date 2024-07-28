@@ -45,7 +45,7 @@ const Pop1 = () => {
           </Cell>
           <div className={styles.bottom}>
             <div className={styles.btns}>
-              <div className={styles.item}>
+              <div>
                 <InviteFriendsButton />
               </div>
               <div className={styles.item}>
