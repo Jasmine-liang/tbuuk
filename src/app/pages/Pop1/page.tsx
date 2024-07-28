@@ -48,10 +48,10 @@ const Pop1 = () => {
               <div>
                 <InviteFriendsButton />
               </div>
-              <div className={styles.item}>
+              <div >
                 <CopyLinkButton />
               </div>
-              <div className={styles.item}>
+              <div >
                 <ExternalLinkButton />
               </div>
             </div>

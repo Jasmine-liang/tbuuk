@@ -1,28 +1,44 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { initUtils } from '@telegram-apps/sdk-react';
 import Image from "components/Image";
 import styles from "./index.module.scss";
 import WebApp from '@twa-dev/sdk';
 
 
+interface TelegramUser {
+  id: number;
+  first_name: string;
+  last_name?: string;
+  username?: string;
+  language_code?: string;
+}
 
 
 const ShareLinkButton: React.FC = () => {
 
+  const [user, setUser] = useState<TelegramUser | null>(null);
+  const [inviteLink, setInviteLink] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+    if (WebApp.initDataUnsafe.user) {
+      setUser(WebApp.initDataUnsafe.user);
+      console.log("userid",WebApp.initDataUnsafe.user.id )
+      setInviteLink(`https://t.me/wytestsbot?start=${user?.id}`)
+    }
+  }
+  }, [user]);
   const handleShareToChat = () => {
 
     const message = `
-      https://t.me/tbook_incentive_bot?start=50636747698965
-      
-      @tbook_incentive_bot
-      Hi friend, get your 5 scratch cards🎉
-      
-      💅Scratch to earn 🪙 Notcoin 💵20,000U 🏆TPoints
-      https://t.me/tbook_incentive_bot?start=50636747698965
-            `.trim()
+    Hi friend, get your 5 scratch cards🎉💅
+    
+    Scratch to earn 🪙 Notcoin 💵20,000U 🏆TPoints
+    
+${inviteLink}}
+  `.trim()
 
 
     // //这个函数执行完之后就会 close mini app, 没有回传什么东西
